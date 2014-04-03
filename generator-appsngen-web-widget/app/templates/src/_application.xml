@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module>
+    <ModulePrefs id="<%= _.slugify(appName) %>"
+                 title="<%= appName %>"
+                 description="Your cool app description" >
+    </ModulePrefs>
+
+    <Metadata>
+        <Information>
+            <![CDATA[
+			Your cool app info
+		]]>
+        </Information>
+        <Categories>Examples</Categories>
+        <SupportedDimensions>LARGE | MEDIUM | SMALL</SupportedDimensions>
+    </Metadata>
+
+    <UserPref name="greeting"
+              display_name="Preffered greeting"
+              datatype="text"
+              default_value="Hello, World!" />
+
+    <Content type="html" href="application.html">
+    </Content>
+</Module>

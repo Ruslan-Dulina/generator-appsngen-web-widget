@@ -1,0 +1,1 @@
+call grunt.cmd dev

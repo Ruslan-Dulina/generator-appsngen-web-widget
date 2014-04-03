@@ -1,0 +1,4 @@
+/* IE8 FIX */
+.waiting {
+    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=60);
+}
