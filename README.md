@@ -97,6 +97,7 @@ Run [Jasmine](http://jasmine.github.io/2.0/introduction.html) tests with code co
 $ grunt test
 ```
 
+After grunt command run output zip archive will be created at '.out' folder. This archive can be used for upload to appsngen website.
 
 ## License
 
