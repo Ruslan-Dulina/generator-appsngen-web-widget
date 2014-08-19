@@ -41,6 +41,62 @@ Yeoman has a heart of gold. He's a person with feelings and opinions, but he's v
 
 If you'd like to get to know Yeoman better and meet some of his friends, [Grunt](http://gruntjs.com) and [Bower](http://bower.io), check out the complete [Getting Started Guide](https://github.com/yeoman/yeoman/wiki/Getting-Started).
 
+### Widget Structure
+
+After widget template generated it has following structure
+|-- documentation
+|-- node modules
+|-- src
+|   |-- css
+|   |-- fonts
+|   |-- images
+|   |-- js
+|       |-- dependencies
+|   |index.html
+|   |application.xml
+|-- tests
+|   |-- mocks
+|   |-- specs
+|bower.json
+|Gruntfile.js
+|package.json
+
+* `/documentation` - folder for placing documentation about widget.
+* `/node modules` - node modules used for widget building.
+* `/src` - widget sources.
+* `/src/application.xml` - config with widget metadata.
+* `/src/index.html` - widget main page.
+* `/tests` - widget tests using [Jasmine](http://jasmine.github.io/2.0/introduction.html).
+* `/bower.json` - widget dependencies. This dependencies used by widget.
+* `/Gruntfile.js` - widget build automation file. See [Grunt](http://gruntjs.com) for more details.
+* `/package.json` -  dependencies required by Grunt in order to build widget or run it's tests.
+
+### Running Grunt
+
+Building development version of widget, without files minification:
+
+```
+$ grunt dev
+```
+
+Building production version of widget, with files minification:
+
+```
+$ grunt 
+```
+
+Run [JSLint](http://www.jslint.com/):
+
+```
+$ grunt jslint-check
+```
+
+Run [Jasmine](http://jasmine.github.io/2.0/introduction.html) tests with code coverage:
+
+```
+$ grunt test
+```
+
 
 ## License
 

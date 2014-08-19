@@ -79,11 +79,6 @@ var AppsngenGenerator = yeoman.generators.Base.extend({
 
         this.template('_bower.json', 'bower.json');
         this.template('_package.json', 'package.json');
-
-        this.copy('build_dev.bat', 'build_dev.bat');
-        this.copy('build_prod.bat', 'build_prod.bat');
-        this.copy('build_jslint.bat', 'build_jslint.bat');
-        this.copy('build_test.bat', 'build_test.bat');
     }
 });
 
