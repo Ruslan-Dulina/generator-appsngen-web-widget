@@ -1,148 +1,97 @@
-/***Application Frame***/
-/***Font***/
-@GLOBAL_APPLICATION_FRAME_FONT_SIZE : 12px;
-@GLOBAL_APPLICATION_FRAME_FONT_FAMILY : Arial, sans-serif;
-@GLOBAL_APPLICATION_FRAME_FONT_COLOR: #ccc;
+@gray-darker:            lighten(#000, 13.5%); // #222
+@gray-dark:              lighten(#000, 20%);   // #333
+@gray:                   #858585; // #858585
+@gray-light:             lighten(#000, 60%);   // #999
+@gray-lighter:           lighten(#000, 93.5%); // #eee
 
-/***Background***/
-@GLOBAL_APPLICATION_FRAME_BACKGROUND_PRIMARY_COLOR: #2d2d2d;
-@GLOBAL_APPLICATION_FRAME_BACKGROUND_SECONDARY_COLOR: #2d2d2d;
-@GLOBAL_APPLICATION_FRAME_FOREGROUND_COLOR : #EDB200;
+@body-bg:               #000000;
+@text-color:            #FFFFFF;
 
-/***Border***/
-@GLOBAL_APPLICATION_FRAME_BORDER_STYLE: solid;
-@GLOBAL_APPLICATION_FRAME_BORDER_WIDTH: 1px;
-@GLOBAL_APPLICATION_FRAME_BORDER_COLOR: #666666;
-@GLOBAL_APPLICATION_FRAME_BORDER_RADIUS: 0px;
+@font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif;
+@font-family-serif:       Georgia, "Times New Roman", Times, serif;
+@font-family-monospace:   Monaco, Menlo, Consolas, "Courier New", monospace;
+@font-family-base:        @font-family-sans-serif;
 
+@font-size-base:          14px;
+@font-size-large:         ceil(@font-size-base * 1.25); // ~18px
+@font-size-small:         ceil(@font-size-base * 0.85); // ~12px
 
-/***Header***/
-/***Font***/
-@GLOBAL_HEADER_FONT_SIZE : 16px;
-@GLOBAL_HEADER_FONT_FAMILY : Arial, sans-serif;
-@GLOBAL_HEADER_FONT_COLOR : #fff;
-@GLOBAL_HEADER_FONT_STYLE : normal;
-@GLOBAL_HEADER_FONT_WEIGHT : bold;
-@GLOBAL_HEADER_TEXT_DECORATION : none;
-@GLOBAL_HEADER_TEXT_TRANSFORMATION : uppercase;
+@font-size-h1:            floor(@font-size-base * 1.5); // ~21px
+@font-size-h2:            floor(@font-size-base * 2.15); // ~30px
+@font-size-h3:            ceil(@font-size-base * 1.7); // ~24px
+@font-size-h4:            ceil(@font-size-base * 1.25); // ~18px
+@font-size-h5:            @font-size-base;
+@font-size-h6:            ceil(@font-size-base * 0.85); // ~12px
 
-/***Background***/
-@GLOBAL_HEADER_BACKGROUND_PRIMARY_COLOR : none;
-@GLOBAL_HEADER_BACKGROUND_SECONDARY_COLOR:none;
+@line-height-base:        1.428571429; // 20/14
+@line-height-computed:    floor(@font-size-base * @line-height-base); // ~20px
 
-/***Border***/
-@GLOBAL_HEADER_BORDER_COLOR : none;
-@GLOBAL_HEADER_BORDER_STYLE : dotted;
-@GLOBAL_HEADER_BORDER_WIDTH : 0;
-@GLOBAL_HEADER_BORDER_RADIUS : 0;
+@headings-font-family:    @font-family-base;
+@headings-font-weight:    500;
+@headings-line-height:    1.1;
+@headings-color:          inherit;
 
-/***Header***/
-/***Font***/
-@GLOBAL_HEADER2_FONT_SIZE : 16px;
-@GLOBAL_HEADER2_FONT_FAMILY : Arial, sans-serif;
-@GLOBAL_HEADER2_FONT_COLOR : #fff;
-@GLOBAL_HEADER2_FONT_STYLE : normal;
-@GLOBAL_HEADER2_FONT_WEIGHT : bold;
-@GLOBAL_HEADER2_TEXT_DECORATION : none;
-@GLOBAL_HEADER2_TEXT_TRANSFORMATION : uppercase;
-
-/***Background***/
-@GLOBAL_HEADER2_BACKGROUND_PRIMARY_COLOR : none;
-@GLOBAL_HEADER2_BACKGROUND_SECONDARY_COLOR:none;
-
-/***Border***/
-@GLOBAL_HEADER2_BORDER_COLOR : none;
-@GLOBAL_HEADER2_BORDER_STYLE : dotted;
-@GLOBAL_HEADER2_BORDER_WIDTH : 0;
-@GLOBAL_HEADER2_BORDER_RADIUS : 0;
-
-
-/***Color changes***/
-@GLOBAL_COLOR_CODING_POSITIVE_CHANGES : #2CD900;
-@GLOBAL_COLOR_CODING_NEGATIVE_CHANGES : #FF5353;
-
-
-@GLOBAL_INPUT_LABEL_FONT_SIZE : 12px;
-@GLOBAL_INPUT_LABEL_FONT_COLOR : #fff;
-@GLOBAL_INPUT_LABEL_FONT_STYLE : normal;
-@GLOBAL_INPUT_LABEL_FONT_WEIGHT : normal;
-@GLOBAL_INPUT_LABEL_TEXT_DECORATION : none;
-@GLOBAL_INPUT_BACKGROUND_PRIMARY_COLOR : #5d5d5d;
-@GLOBAL_INPUT_BACKGROUND_SECONDARY_COLOR :  none;
-@GLOBAL_INPUT_BORDER_COLOR : #939393;
-@GLOBAL_INPUT_BORDER_STYLE : solid;
-@GLOBAL_INPUT_BORDER_WIDTH : 1px;
-@GLOBAL_INPUT_BORDER_RADIUS : 0;
-
-
-@GLOBAL_DROPDOWN_HEADER_FONT_COLOR : #ffffff;
-@GLOBAL_DROPDOWN_HEADER_FONT_STYLE : normal;
-@GLOBAL_DROPDOWN_HEADER_FONT_WEIGHT : bold;
-@GLOBAL_DROPDOWN_HEADER_TEXT_DECORATION : none;
-@GLOBAL_DROPDOWN_HEADER_TEXT_TRANSFORMATION : uppercase;
-@GLOBAL_DROPDOWN_BODY_ELEMENT_FONT_COLOR : #cccccc;
-@GLOBAL_DROPDOWN_BODY_SELECTED_ELEMENT_FONT_COLOR : #ffbf00;
-@GLOBAL_DROPDOWN_BODY_HOVER_ELEMENT_BACKGROUND_COLOR : #454545;
-@GLOBAL_DROPDOWN_BACKGROUND_COLOR : #383838;
-
-
-@GLOBAL_ACTIVE_TAB_FONT_SIZE : 13px;
-@GLOBAL_ACTIVE_TAB_FONT_COLOR : #FFBF00;
-@GLOBAL_ACTIVE_TAB_FONT_STYLE :  normal;
-@GLOBAL_ACTIVE_TAB_BACKGROUND_COLOR : #454545;
-@GLOBAL_ACTIVE_TAB_FONT_WEIGHT : bold;
-@GLOBAL_ACTIVE_TAB_TEXT_DECORATION : none;
-@GLOBAL_INACTIVE_TAB_FONT_SIZE : 13px;
-@GLOBAL_INACTIVE_TAB_FONT_COLOR : #ccc;
-@GLOBAL_INACTIVE_TAB_FONT_STYLE :  normal;
-@GLOBAL_INACTIVE_TAB_BACKGROUND_COLOR : #3B3B3B;
-@GLOBAL_INACTIVE_TAB_FONT_WEIGHT : bold;
-@GLOBAL_INACTIVE_TAB_TEXT_DECORATION : none;
-
-
-@GLOBAL_LINK_DEFAULT_FONT_COLOR: #ff8000;
-@GLOBAL_LINK_DEFAULT_FONT_SIZE: 11px;
-@GLOBAL_LINK_DEFAULT_FONT_STYLE: normal;
-@GLOBAL_LINK_DEFAULT_FONT_WEIGHT: normal;
-@GLOBAL_LINK_DEFAULT_TEXT_DECORATION: none;
-
-@GLOBAL_LINK_HOVER_FONT_COLOR: #ff8000;
-@GLOBAL_LINK_HOVER_FONT_SIZE: 11px;
-@GLOBAL_LINK_HOVER_FONT_STYLE: normal;
-@GLOBAL_LINK_HOVER_FONT_WEIGHT: normal;
-@GLOBAL_LINK_HOVER_TEXT_DECORATION: underline;
-
-@GLOBAL_LINK_VISITED_FONT_COLOR: #f5be87;
-@GLOBAL_LINK_VISITED_FONT_SIZE: 11px;
-@GLOBAL_LINK_VISITED_FONT_STYLE: normal;
-@GLOBAL_LINK_VISITED_FONT_WEIGHT: normal;
-@GLOBAL_LINK_VISITED_TEXT_DECORATION: none;
-
-
-@GLOBAL_ERROR_BACKGROUND_COLOR : #FAE2E2;
-@GLOBAL_ERROR_FONT_COLOR : #d80000;
+// Type
+// ------------------------
+@headings-small-color:        @gray-light;
 
 body {
   overflow: hidden;
-  font-size: @GLOBAL_APPLICATION_FRAME_FONT_SIZE;
-  font-family: @GLOBAL_APPLICATION_FRAME_FONT_FAMILY;
-  color: @GLOBAL_APPLICATION_FRAME_FONT_COLOR;
-  background: @GLOBAL_APPLICATION_FRAME_BACKGROUND_PRIMARY_COLOR;
+  font-size: @font-size-base;
+  font-family: @font-family-base;
+  color: @text-color;
+  background: @body-bg;
 }
 
-h1 {
-  font-size: @GLOBAL_HEADER_FONT_SIZE;
-  font-family: @GLOBAL_HEADER_FONT_FAMILY;
-  color: @GLOBAL_HEADER_FONT_COLOR;
-  background: @GLOBAL_HEADER_BACKGROUND_PRIMARY_COLOR;
+// Headings
+// -------------------------
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: @headings-font-family;
+  font-weight: @headings-font-weight;
+  line-height: @headings-line-height;
+  color: @headings-color;
+
+  small,
+  .small {
+    font-weight: normal;
+    line-height: 1;
+    color: @headings-small-color;
+  }
 }
 
-h2 {
-  font-size: @GLOBAL_HEADER2_FONT_SIZE;
-  font-family: @GLOBAL_HEADER2_FONT_FAMILY;
-  color: @GLOBAL_HEADER2_FONT_COLOR;
-  background: @GLOBAL_HEADER2_BACKGROUND_PRIMARY_COLOR;
+h1,
+h2,
+h3 {
+  margin-top: @line-height-computed;
+  margin-bottom: (@line-height-computed / 2);
+
+  small,
+  .small {
+    font-size: 65%;
+  }
 }
+h4,
+h5,
+h6 {
+  margin-top: (@line-height-computed / 2);
+  margin-bottom: (@line-height-computed / 2);
+
+  small,
+  .small {
+    font-size: 75%;
+  }
+}
+
+h1, .h1 { font-size: @font-size-h1; }
+h2, .h2 { font-size: @font-size-h2; }
+h3, .h3 { font-size: @font-size-h3; }
+h4, .h4 { font-size: @font-size-h4; }
+h5, .h5 { font-size: @font-size-h5; }
+h6, .h6 { font-size: @font-size-h6; }
+
+
 
 .small-dimension, .medium-dimension, .large-dimension {
   display: none;
