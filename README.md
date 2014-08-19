@@ -44,22 +44,22 @@ If you'd like to get to know Yeoman better and meet some of his friends, [Grunt]
 ### Widget Structure
 
 After widget template generated it has following structure
-|-- documentation
-|-- node modules
-|-- src
-|   |-- css
-|   |-- fonts
-|   |-- images
-|   |-- js
-|       |-- dependencies
-|   |index.html
-|   |application.xml
-|-- tests
-|   |-- mocks
-|   |-- specs
-|bower.json
-|Gruntfile.js
-|package.json
+    |-- documentation
+    |-- node modules
+    |-- src
+    |   |-- css
+    |   |-- fonts
+    |   |-- images
+    |   |-- js
+    |       |-- dependencies
+    |   |index.html
+    |   |application.xml
+    |-- tests
+    |   |-- mocks
+    |   |-- specs
+    |bower.json
+    |Gruntfile.js
+    |package.json
 
 * `/documentation` - folder for placing documentation about widget.
 * `/node modules` - node modules used for widget building.
@@ -97,7 +97,7 @@ Run [Jasmine](http://jasmine.github.io/2.0/introduction.html) tests with code co
 $ grunt test
 ```
 
-After grunt command run output zip archive will be created at '.out' folder. This archive can be used for upload to appsngen website.
+After grunt command run output zip archive will be created at `.out` folder. This archive can be used for upload to appsngen website.
 
 ## License
 
