@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Module>
-    <ModulePrefs id="<%= _.slugify(appName) %>"
-                 title="<%= appName %>"
-                 description="Your cool app description" >
+    <ModulePrefs id="<%= _.slugify(widgetName) %>"
+                 title="<%= widgetName %>"
+                 description="Your cool widget description" >
     </ModulePrefs>
 
     <Metadata>
         <Information>
             <![CDATA[
-			Your cool app info
+			Your cool widet info
 		]]>
         </Information>
         <Categories>Examples</Categories>
@@ -16,10 +16,10 @@
     </Metadata>
 
     <UserPref name="greeting"
-              display_name="Preffered greeting"
+              display_name="Preferred greeting"
               datatype="text"
               default_value="Hello, World!" />
 
-    <Content type="html" href="application.html">
+    <Content type="html" href="widget.html">
     </Content>
 </Module>

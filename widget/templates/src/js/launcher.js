@@ -1,25 +1,25 @@
 (function (exports) {
     'use strict';
     var appstore = exports.appstore;
-    var webApp = exports.webApp || {};
+    var webWidget = exports.widget || {};
     var console = exports.console || { log: function () { return; } };
 
     appstore.ready(function (eventContext) {
         var prefs = appstore.prefs.get('greeting');
-        var ui = new webApp.ApplicationUI({
-            containerId: 'app'
+        var ui = new webWidget.WidgetUI({
+            containerId: 'widget'
         });
-        var app = new webApp.Application({
+        var widget = new webWidget.Widget({
             ui: ui,
             prefs: prefs
         });
 
-        if (webApp.debug) {
-            console.log('application launch');
+        if (webWidget.debug) {
+            console.log('widget launch');
         }
 
-        app.init();
+        widget.init();
     });
 
-    exports.webApp = webApp;
+    exports.widget = webWidget;
 }(this));

@@ -1,12 +1,12 @@
 {
   "name": "generator-appsngen-web-widget",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Yeoman generator",
   "license": "MIT",
-  "main": "app/index.js",
+  "main": "widget/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Ruslan-Dulina/generator-appsngen-web-widget.git"
+    "url": "https://github.com/appsngen/generator-appsngen-web-widget.git"
   },
   "author": {
     "name": "maksim_bartoshyk",
@@ -20,7 +20,7 @@
     "test": "mocha"
   },
   "files": [
-    "app"
+    "widget"
   ],
   "keywords": [
     "yeoman-generator",

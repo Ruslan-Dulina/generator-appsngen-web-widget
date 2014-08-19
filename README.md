@@ -26,13 +26,13 @@ Yeoman travels light. He didn't pack any generators when he moved in. You can th
 To install generator-appsngen from npm, run:
 
 ```
-$ npm install -g generator-appsngen
+$ npm install -g generator-appsngen-web-widget
 ```
 
 Finally, initiate the generator:
 
 ```
-$ yo appsngen
+$ yo appsngen-appsngen-web-widget
 ```
 
 ### Getting To Know Yeoman

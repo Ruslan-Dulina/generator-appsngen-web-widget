@@ -1,10 +1,10 @@
-describe('Application module', function () {
+describe('Widget module', function () {
     it('sets greeting', function () {
-        var uiMock = new webApp.ApplicationUI();
+        var uiMock = new webWidget.WidgetUI();
         var prefsMock = {
             greeting: 'testGreeting'
         };
-        var target = new webApp.Application({
+        var target = new webWidget.Widget({
             ui: uiMock,
             prefs: prefsMock
         });

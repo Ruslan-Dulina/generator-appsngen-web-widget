@@ -26,54 +26,54 @@ var AppsngenGenerator = yeoman.generators.Base.extend({
         console.log(this.yeoman);
 
         // replace it with a short and sweet description of your generator
-        console.log(chalk.magenta('You\'re using the AppsNgen Web Application generator.'));
+        console.log(chalk.magenta('You\'re using the AppsNgen Web Widget generator.'));
 
         var prompts = [
             {
-                name: 'appName',
-                message: 'What do you want to call your application?',
-                default: 'AppsNgen Web Application'
+                name: 'widgetName',
+                message: 'What do you want to call your widget?',
+                default: 'AppsNgen Web Widget'
             }
         ];
 
         this.prompt(prompts, function (props) {
-            this.appName = props.appName;
+            this.widgetName = props.widgetName;
 
             done();
         }.bind(this));
     },
 
-    app: function () {
+    widget: function () {
         this.mkdir('documentation');
 
         this.mkdir('src');
 
         this.mkdir('src/css');
         this.copy('src/css/ie8.css', 'src/css/ie8.css');
-        this.copy('src/css/application.less', 'src/css/application.less');
-        this.copy('src/css/application.large.less', 'src/css/application.large.less');
-        this.copy('src/css/application.medium.less', 'src/css/application.medium.less');
-        this.copy('src/css/application.small.less', 'src/css/application.small.less');
+        this.copy('src/css/widget.less', 'src/css/widget.less');
+        this.copy('src/css/widget.large.less', 'src/css/widget.large.less');
+        this.copy('src/css/widget.medium.less', 'src/css/widget.medium.less');
+        this.copy('src/css/widget.small.less', 'src/css/widget.small.less');
 
         this.mkdir('src/images');
         this.mkdir('src/fonts');
 
         this.mkdir('src/js');
         this.mkdir('src/js/dependencies');
-        this.copy('src/js/application.js', 'src/js/application.js');
-        this.copy('src/js/application.ui.js', 'src/js/application.ui.js');
+        this.copy('src/js/widget.js', 'src/js/widget.js');
+        this.copy('src/js/widget.ui.js', 'src/js/widget.ui.js');
         this.copy('src/js/debug.js', 'src/js/debug.js');
         this.copy('src/js/launcher.js', 'src/js/launcher.js');
 
-        this.copy('src/application.html', 'src/application.html');
-        this.template('src/_application.xml', 'src/application.xml');
+        this.copy('src/widget.html', 'src/widget.html');
+        this.template('src/_application.xml', 'src/widget.xml');
 
         this.mkdir('tests');
         this.mkdir('tests/mocks');
-        this.copy('tests/mocks/application.ui.mock.js', 'tests/mocks/application.ui.mock.js');
+        this.copy('tests/mocks/widget.ui.mock.js', 'tests/mocks/widget.ui.mock.js');
 
         this.mkdir('tests/specs');
-        this.copy('tests/specs/application.spec.js', 'tests/specs/application.spec.js');
+        this.copy('tests/specs/widget.spec.js', 'tests/specs/widget.spec.js');
 
         this.copy('Gruntfile.js', 'Gruntfile.js');
 

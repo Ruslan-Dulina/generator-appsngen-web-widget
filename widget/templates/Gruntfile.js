@@ -5,7 +5,7 @@ module.exports = function (grunt) {
             src: "src",
             tests: "tests",
             out: ".out",
-            appName: grunt.file.readJSON('package.json').name
+            widgetName: grunt.file.readJSON('package.json').name
         },
         bower: {
             install: {
@@ -22,25 +22,25 @@ module.exports = function (grunt) {
         },
         /* cleans output folder  */
         clean: {
-            beforebuild: ['<%= meta.out %>/<%= meta.appName %>', '<%= meta.out %>/<%= meta.appName %>.zip'],
-            afterbuild: ['<%= meta.out %>/<%= meta.appName %>'],
+            beforebuild: ['<%= meta.out %>/<%= meta.widgetName %>', '<%= meta.out %>/<%= meta.widgetName %>.zip'],
+            afterbuild: ['<%= meta.out %>/<%= meta.widgetName %>'],
             beforetest: ['<%= meta.out %>/tests', '<%= meta.out %>/coverage'],
             aftertest: ['.grunt'],
             beforejslint: ['<%= meta.out %>/jslint'],
             afterjslint: []
         },
-        /* copies files which are used by application 'as is' */
+        /* copies files which are used by widget 'as is' */
         copy: {
             src: {
                 expand: true,
                 src: [
-                    'application.xml',
+                    'widget.xml',
                     'css/*.less',
                     'images/**/*.png',
                     'images/**/*.gif',
                     'images/**/*.jpg'
                 ],
-                dest: '<%= meta.out %>/<%= meta.appName %>',
+                dest: '<%= meta.out %>/<%= meta.widgetName %>',
                 cwd: '<%= meta.src %>'
             }
         },
@@ -50,56 +50,56 @@ module.exports = function (grunt) {
                 src: [
                     '<%= meta.src %>/js/dependencies/respond/respond.src.js',
                     '<%= meta.src %>/js/dependencies/jquery/jquery.js',
-                    '<%= meta.src %>/js/application.ui.js',
-                    '<%= meta.src %>/js/application.js',
+                    '<%= meta.src %>/js/widget.ui.js',
+                    '<%= meta.src %>/js/widget.js',
                     '<%= meta.src %>/js/launcher.js'
                 ],
-                dest: '<%= meta.out %>/<%= meta.appName %>/js/application.concat.js'
+                dest: '<%= meta.out %>/<%= meta.widgetName %>/js/widget.concat.js'
             },
             css: {
                 src: ['<%= meta.src %>/css/*.css'],
-                dest: '<%= meta.out %>/<%= meta.appName %>/css/styles.concat.css'
+                dest: '<%= meta.out %>/<%= meta.widgetName %>/css/styles.concat.css'
             },
             debug: {
                 src: [
-                    '<%= meta.out %>/<%= meta.appName %>/js/debug.js',
-                    '<%= meta.out %>/<%= meta.appName %>/js/application.concat.js'
+                    '<%= meta.out %>/<%= meta.widgetName %>/js/debug.js',
+                    '<%= meta.out %>/<%= meta.widgetName %>/js/widget.concat.js'
                 ],
-                dest: '<%= meta.out %>/<%= meta.appName %>/js/application.concat.js'
+                dest: '<%= meta.out %>/<%= meta.widgetName %>/js/widget.concat.js'
             }
         },
         /* minifies concateneted js files */
         uglify: {
             js: {
-                src: '<%= meta.out %>/<%= meta.appName %>/js/application.concat.js',
-                dest: '<%= meta.out %>/<%= meta.appName %>/js/application.concat.js'
+                src: '<%= meta.out %>/<%= meta.widgetName %>/js/widget.concat.js',
+                dest: '<%= meta.out %>/<%= meta.widgetName %>/js/widget.concat.js'
             }
         },
         /* minifies concateneted css files */
         cssmin: {
             css: {
-                src: ['<%= meta.out %>/<%= meta.appName %>/css/styles.concat.css'],
-                dest: '<%= meta.out %>/<%= meta.appName %>/css/styles.concat.css'
+                src: ['<%= meta.out %>/<%= meta.widgetName %>/css/styles.concat.css'],
+                dest: '<%= meta.out %>/<%= meta.widgetName %>/css/styles.concat.css'
             }
         },
         htmlrefs: {
             build: {
-                src: '<%= meta.src %>/application.html',
-                dest: '<%= meta.out %>/<%= meta.appName %>'
+                src: '<%= meta.src %>/widget.html',
+                dest: '<%= meta.out %>/<%= meta.widgetName %>'
             }
         },
         jasmine: {
-            "application": {
+            "widget": {
                 "src": [
-                    "<%= meta.src %>/js/application.js"
+                    "<%= meta.src %>/js/widget.js"
                 ],
                 "options": {
                     "vendor": [
                         "<%= meta.src %>/js/dependencies/jquery-1.7.2.min.js",
-                        "<%= meta.tests %>/mocks/application.ui.mock.js"
+                        "<%= meta.tests %>/mocks/widget.ui.mock.js"
                     ],
                     "specs": [
-                        "<%= meta.tests %>/specs/application.spec.js"
+                        "<%= meta.tests %>/specs/widget.spec.js"
                     ],
                     "junit": {
                         "path": "<%= meta.out %>/tests",
@@ -127,8 +127,8 @@ module.exports = function (grunt) {
         jslint: {
             "all": {
                 "src": [
-                    "<%= meta.src %>/js/application.js",
-                    "<%= meta.src %>/js/application.ui.js",
+                    "<%= meta.src %>/js/widget.js",
+                    "<%= meta.src %>/js/widget.ui.js",
                     "<%= meta.src %>/js/launcher.js",
                     "<%= meta.src %>/js/debug.js"
                 ],
@@ -158,9 +158,9 @@ module.exports = function (grunt) {
         },
         compress: {
             zip: {
-                options: { archive: '<%= meta.out %>/<%= meta.appName %>.zip' },
+                options: { archive: '<%= meta.out %>/<%= meta.widgetName %>.zip' },
                 files: [
-                    { expand: true, src: ['**/*'], cwd: '<%= meta.out %>/<%= meta.appName %>' }
+                    { expand: true, src: ['**/*'], cwd: '<%= meta.out %>/<%= meta.widgetName %>' }
                 ]
             }
         }

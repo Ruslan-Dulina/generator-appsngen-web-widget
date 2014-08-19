@@ -10,8 +10,8 @@ describe('appsngen generator', function () {
         return done(err);
       }
 
-      this.app = helpers.createGenerator('appsngen:app', [
-        '../../app'
+      this.widget = helpers.createGenerator('appsngen:widget', [
+        '../../widget'
       ]);
       done();
     }.bind(this));
@@ -24,11 +24,11 @@ describe('appsngen generator', function () {
       '.editorconfig'
     ];
 
-    helpers.mockPrompt(this.app, {
+    helpers.mockPrompt(this.widget, {
       'someOption': true
     });
-    this.app.options['skip-install'] = true;
-    this.app.run({}, function () {
+    this.widget.options['skip-install'] = true;
+    this.widget.run({}, function () {
       helpers.assertFile(expected);
       done();
     });
