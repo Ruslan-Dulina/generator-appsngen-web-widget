@@ -1,4 +1,4 @@
-# generator-appsngen-web-widget [![Build Status](https://secure.travis-ci.org/no/generator-appsngen.png?branch=master)](https://travis-ci.org/no/generator-appsngen)
+# generator-appsngen-web-widget [![Build Status](https://secure.travis-ci.org/appsngen/generator-appsngen-web-widget.png?branch=master)](https://travis-ci.org/appsngen/generator-appsngen-web-widget)
 
 > [Yeoman](http://yeoman.io) generator
 

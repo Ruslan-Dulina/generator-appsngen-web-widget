@@ -20,6 +20,8 @@ describe('appsngen generator', function () {
   it('creates expected files', function (done) {
     var expected = [
       // add files you expect to exist here.
+      'Gruntfile.js',
+      'bower.json',
       'src/application.xml',
       'src/index.html'
     ];
