@@ -48,16 +48,16 @@ After widget template generated it has following structure:
 |-- documentation  
 |-- node modules  
 |-- src  
-|   |-- css  
-|   |-- fonts  
-|   |-- images  
-|   |-- js  
-|       |-- dependencies  
-|   |index.html  
-|   |application.xml  
+|&nbsp;&nbsp;&nbsp;&nbsp;|-- css  
+|&nbsp;&nbsp;&nbsp;&nbsp;|-- fonts  
+|&nbsp;&nbsp;&nbsp;&nbsp;|-- images  
+|&nbsp;&nbsp;&nbsp;&nbsp;|-- js  
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-- dependencies  
+|&nbsp;&nbsp;&nbsp;&nbsp;|index.html  
+|&nbsp;&nbsp;&nbsp;&nbsp;|application.xml  
 |-- tests  
-|   |-- mocks  
-|   |-- specs  
+|&nbsp;&nbsp;&nbsp;&nbsp;|-- mocks  
+|&nbsp;&nbsp;&nbsp;&nbsp;|-- specs  
 |bower.json  
 |Gruntfile.js  
 |package.json  
