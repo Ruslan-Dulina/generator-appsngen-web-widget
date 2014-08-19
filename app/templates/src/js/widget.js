@@ -1,6 +1,7 @@
 (function (exports) {
     'use strict';
-    var widget = exports.widget || {};
+    var webWidget = exports.webWidget || {};
+
     var Widget = function (options) {
         this.ui = options.ui;
         this.prefs = options.prefs;
@@ -10,6 +11,6 @@
         this.ui.setGreeting(this.prefs.greeting);
     };
 
-    widget.Widget = Widget;
-    exports.widget = widget;
+    webWidget.Widget = Widget;
+    exports.webWidget = webWidget;
 }(this));

@@ -1,9 +1,10 @@
 (function (exports) {
-    var webWidget = exports.widget || {};
+    var webWidget = exports.webWidget || {};
+
     webWidget.WidgetUI = function (options) {
     };
 
     webWidget.WidgetUI.prototype.setGreeting = function () {};
 
-    exports.widget = webWidget;
+    exports.webWidget = webWidget;
 }(this));

@@ -1,6 +1,7 @@
 (function (exports) {
     'use strict';
-    var webWidget = exports.widget || {};
+    var webWidget = exports.webWidget || {};
+
     webWidget.debug = true;
-    exports.widget = webWidget;
+    exports.webWidget = webWidget;
 }(this));

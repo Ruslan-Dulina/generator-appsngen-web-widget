@@ -1,7 +1,7 @@
 (function (exports) {
     'use strict';
     var appstore = exports.appstore;
-    var webWidget = exports.widget || {};
+    var webWidget = exports.webWidget || {};
     var console = exports.console || { log: function () { return; } };
 
     appstore.ready(function (eventContext) {
@@ -14,12 +14,12 @@
             prefs: prefs
         });
 
-        if (webWidget.debug) {
+        if (widget.debug) {
             console.log('widget launch');
         }
 
         widget.init();
     });
 
-    exports.widget = webWidget;
+    exports.webWidget = webWidget;
 }(this));

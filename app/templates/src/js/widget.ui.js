@@ -1,6 +1,7 @@
 (function (exports) {
     'use strict';
     var webWidget = exports.webWidget || {};
+
     var WidgetUI = function (options) {
         this.$container = $('#' + options.containerId);
     };

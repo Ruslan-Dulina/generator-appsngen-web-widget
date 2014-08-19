@@ -34,7 +34,7 @@ module.exports = function (grunt) {
             src: {
                 expand: true,
                 src: [
-                    'widget.xml',
+                    'application.xml',
                     'css/*.less',
                     'images/**/*.png',
                     'images/**/*.gif',
