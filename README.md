@@ -43,23 +43,24 @@ If you'd like to get to know Yeoman better and meet some of his friends, [Grunt]
 
 ### Widget Structure
 
-After widget template generated it has following structure
-    |-- documentation
-    |-- node modules
-    |-- src
-    |   |-- css
-    |   |-- fonts
-    |   |-- images
-    |   |-- js
-    |       |-- dependencies
-    |   |index.html
-    |   |application.xml
-    |-- tests
-    |   |-- mocks
-    |   |-- specs
-    |bower.json
-    |Gruntfile.js
-    |package.json
+After widget template generated it has following structure:
+
+|-- documentation
+|-- node modules
+|-- src
+|   |-- css
+|   |-- fonts
+|   |-- images
+|   |-- js
+|       |-- dependencies
+|   |index.html
+|   |application.xml
+|-- tests
+|   |-- mocks
+|   |-- specs
+|bower.json
+|Gruntfile.js
+|package.json
 
 * `/documentation` - folder for placing documentation about widget.
 * `/node modules` - node modules used for widget building.
