@@ -1,4 +1,4 @@
-# generator-appsngen [![Build Status](https://secure.travis-ci.org/no/generator-appsngen.png?branch=master)](https://travis-ci.org/no/generator-appsngen)
+# generator-appsngen-web-widget [![Build Status](https://secure.travis-ci.org/no/generator-appsngen.png?branch=master)](https://travis-ci.org/no/generator-appsngen)
 
 > [Yeoman](http://yeoman.io) generator
 
@@ -23,7 +23,7 @@ $ npm install -g yo
 
 Yeoman travels light. He didn't pack any generators when he moved in. You can think of a generator like a plug-in. You get to choose what type of application you wish to create, such as a Backbone application or even a Chrome extension.
 
-To install generator-appsngen from npm, run:
+To install generator-appsngen-web-widget from npm, run:
 
 ```
 $ npm install -g generator-appsngen-web-widget
@@ -32,7 +32,7 @@ $ npm install -g generator-appsngen-web-widget
 Finally, initiate the generator:
 
 ```
-$ yo appsngen-appsngen-web-widget
+$ yo appsngen-web-widget
 ```
 
 ### Getting To Know Yeoman

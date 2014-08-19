@@ -3,14 +3,14 @@
   "version": "0.2.0",
   "description": "Yeoman generator",
   "license": "MIT",
-  "main": "widget/index.js",
+  "main": "app/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/appsngen/generator-appsngen-web-widget.git"
   },
   "author": {
-    "name": "maksim_bartoshyk",
-    "email": "maksim_bartoshyk@epam.com",
+    "name": "appsngen",
+    "email": "developers@appsngen.com",
     "url": ""
   },
   "engines": {
@@ -20,15 +20,15 @@
     "test": "mocha"
   },
   "files": [
-    "widget"
+    "app"
   ],
   "keywords": [
     "yeoman-generator",
     "appsngen"
   ],
   "dependencies": {
-    "yeoman-generator": "~0.16.0",
-    "chalk": "~0.4.0"
+    "chalk": "~0.4.0",
+    "yeoman-generator": "^0.16.0"
   },
   "devDependencies": {
     "mocha": "*"

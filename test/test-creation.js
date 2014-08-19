@@ -10,8 +10,8 @@ describe('appsngen generator', function () {
         return done(err);
       }
 
-      this.widget = helpers.createGenerator('appsngen:widget', [
-        '../../widget'
+      this.widget = helpers.createGenerator('appsngen:app', [
+        '../../app'
       ]);
       done();
     }.bind(this));
