@@ -65,7 +65,7 @@ var AppsngenGenerator = yeoman.generators.Base.extend({
         this.copy('src/js/debug.js', 'src/js/debug.js');
         this.copy('src/js/launcher.js', 'src/js/launcher.js');
 
-        this.copy('src/widget.html', 'src/widget.html');
+        this.copy('src/index.html', 'src/index.html');
         this.template('src/_application.xml', 'src/application.xml');
 
         this.mkdir('tests');

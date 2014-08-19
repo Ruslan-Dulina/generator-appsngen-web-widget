@@ -84,7 +84,7 @@ module.exports = function (grunt) {
         },
         htmlrefs: {
             build: {
-                src: '<%= meta.src %>/widget.html',
+                src: '<%= meta.src %>/index.html',
                 dest: '<%= meta.out %>/<%= meta.widgetName %>'
             }
         },

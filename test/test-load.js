@@ -4,7 +4,7 @@ var assert = require('assert');
 
 describe('appsngen generator', function () {
   it('can be imported without blowing up', function () {
-    var app = require('../widget');
+    var app = require('../app');
     assert(app !== undefined);
   });
 });

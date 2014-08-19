@@ -20,6 +20,6 @@
               datatype="text"
               default_value="Hello, World!" />
 
-    <Content type="html" href="widget.html">
+    <Content type="html" href="index.html">
     </Content>
 </Module>

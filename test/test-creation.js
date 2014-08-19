@@ -10,7 +10,7 @@ describe('appsngen generator', function () {
         return done(err);
       }
 
-      this.widget = helpers.createGenerator('appsngen:app', [
+      this.widget = helpers.createGenerator('appsngen-web-widget:app', [
         '../../app'
       ]);
       done();
@@ -20,8 +20,8 @@ describe('appsngen generator', function () {
   it('creates expected files', function (done) {
     var expected = [
       // add files you expect to exist here.
-      '.jshintrc',
-      '.editorconfig'
+      'src/application.xml',
+      'src/index.html'
     ];
 
     helpers.mockPrompt(this.widget, {
