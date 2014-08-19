@@ -1,1 +1,0 @@
-call grunt.cmd jslint-check
