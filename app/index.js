@@ -76,6 +76,7 @@ var AppsngenGenerator = yeoman.generators.Base.extend({
         this.copy('tests/specs/widget.spec.js', 'tests/specs/widget.spec.js');
 
         this.copy('Gruntfile.js', 'Gruntfile.js');
+        this.copy('LICENSE', 'LICENSE');
         this.copy('README.md', 'README.md');
 
         this.template('_bower.json', 'bower.json');
