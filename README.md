@@ -45,6 +45,7 @@ If you'd like to get to know Yeoman better and meet some of his friends, [Grunt]
 
 After widget template generated it has following structure:
 
+|--.out  
 |-- documentation  
 |-- node modules  
 |-- src  
@@ -62,6 +63,7 @@ After widget template generated it has following structure:
 |Gruntfile.js  
 |package.json  
 
+* `/.out` - automatically generated folder with widget build or test run results output.
 * `/documentation` - folder for placing documentation about widget.
 * `/node modules` - node modules used for widget building.
 * `/src` - widget sources.
