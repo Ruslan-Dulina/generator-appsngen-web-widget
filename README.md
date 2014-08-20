@@ -74,13 +74,13 @@ After widget template generated it has following structure:
 
 ### Running Grunt
 
-Building development version of widget, without files minification:
+Build development version of widget, without files minification:
 
 ```
 $ grunt dev
 ```
 
-Building production version of widget, with files minification:
+Build production version of widget, with files minification:
 
 ```
 $ grunt 

@@ -2,7 +2,7 @@
     "name": "<%= _.slugify(widgetName) %>",
     "version": "0.1.0",
     "dependencies": {
-        "jquery": "~1.7.1",
+        "jquery": "~2.1.1",
         "respond": "~1.4.2"
     }
 }

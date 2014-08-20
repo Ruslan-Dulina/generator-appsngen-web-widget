@@ -1,6 +1,7 @@
 {
     "name": "<%= _.slugify(widgetName) %>",
     "version": "0.1.0",
+    "description": "Example widget with configured Grunt",
     "dependencies": {
         "grunt": "~0.4.2",
         "grunt-contrib-clean": "~0.5.0",
