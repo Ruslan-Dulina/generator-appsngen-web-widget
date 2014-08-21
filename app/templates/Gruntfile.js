@@ -4,7 +4,7 @@ module.exports = function (grunt) {
         meta: {
             src: "src",
             tests: "tests",
-            out: ".out",
+            out: "dist",
             widgetName: grunt.file.readJSON('package.json').name
         },
         bower: {
