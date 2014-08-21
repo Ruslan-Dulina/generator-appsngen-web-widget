@@ -1,6 +1,6 @@
 {
   "name": "generator-appsngen-web-widget",
-  "version": "0.2.13",
+  "version": "0.2.14",
   "description": "Yeoman generator",
   "license": "MIT",
   "main": "app/index.js",
@@ -11,7 +11,7 @@
   "author": {
     "name": "appsngen",
     "email": "developers@appsngen.com",
-    "url": ""
+    "url": "https://www.appsngen.com"
   },
   "engines": {
     "node": ">=0.10.0"
