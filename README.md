@@ -70,9 +70,9 @@ After widget template generated it has following structure:
 * `/src/application.xml` - config with widget metadata.
 * `/src/index.html` - widget main page.
 * `/tests` - widget tests using [Jasmine](http://jasmine.github.io/2.0/introduction.html).
-* `/bower.json` - widget dependencies. This dependencies used by widget.
+* `/bower.json` - widget dependencies. These dependencies are used by widget.
 * `/Gruntfile.js` - widget build automation file. See [Grunt](http://gruntjs.com) for more details.
-* `/package.json` -  dependencies required by Grunt in order to build widget or run it's tests.
+* `/package.json` -  dependencies required by Grunt in order to build a widget or run its tests.
 
 ### Running Grunt
 
@@ -100,7 +100,7 @@ Run [Jasmine](http://jasmine.github.io/2.0/introduction.html) tests with code co
 $ grunt test
 ```
 
-After grunt command run output zip archive will be created at `dist` folder. This archive can be uploaded to [Sandbox](https://www.appsngen.com/product/my/applications/list).
+After grunt command run, output zip archive will be created at thr `dist` folder. This archive can be uploaded to [Sandbox](https://www.appsngen.com/product/my/applications/list).
 
 
 ## License
