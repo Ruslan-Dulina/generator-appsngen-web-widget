@@ -1,87 +1,140 @@
 'use strict';
-var util = require('util');
-var path = require('path');
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
+var yosay = require('yosay');
+var mkdirp = require('mkdirp');
+var path = require('path');
+var _s = require('underscore.string');
 
+var copyFiles = function (generator, files) {
+    var i;
 
-var AppsngenGenerator = yeoman.generators.Base.extend({
-    init: function () {
-        this.pkg = yeoman.file.readJSON(path.join(__dirname, '../package.json'));
+    for (i = 0; i < files.length; i++) {
+        generator.fs.copy(
+            generator.templatePath(files[i]),
+            generator.destinationPath(files[i])
+        );
+    }
+};
 
-        this.on('end', function () {
-            this.installDependencies({
-                skipInstall: this.options['skip-install'],
-                callback: function () {
-                    this.spawnCommand('grunt', ['bower']);
-                }.bind(this)
-            });
-        });
-    },
+var copyTemplates = function (generator, templates, data) {
+    var i, template, templatePath, templateName, compiledName;
 
-    askFor: function () {
+    for (i = 0; i < templates.length; i++) {
+        template = templates[i];
+        templatePath = path.dirname(template);
+        templateName = path.basename(template);
+        compiledName = templateName.substring(1); // remove leading _ symbol
+
+        generator.fs.copyTpl(
+            generator.templatePath(path.join(templatePath, templateName)),
+            generator.destinationPath(path.join(templatePath, compiledName)),
+            data
+        );
+    }
+};
+
+// copyFiles doesn't create empty folders so we need to create them manually
+var createDirectories = function (directoryNames) {
+    var i, directoryName;
+
+    for (i = 0; i < directoryNames.length; i++) {
+        directoryName = directoryNames[i];
+
+        mkdirp.sync(directoryName);
+        // make output similar to yeoman's
+        console.log('   ' + chalk.green('create') + ' ' + directoryName.replace('/', '\\') + '\\');
+    }
+};
+
+module.exports = yeoman.generators.Base.extend({
+    prompting: function () {
         var done = this.async();
 
-        // have Yeoman greet the user
-        console.log(this.yeoman);
-
-        // replace it with a short and sweet description of your generator
-        console.log(chalk.magenta('You\'re using the AppsNgen Web Widget generator.'));
+        // Have Yeoman greet the user.
+        this.log(yosay(
+            'You\'re using the ' + chalk.red('AppsNgen Web Widget') + ' generator.'
+        ));
 
         var prompts = [
             {
                 name: 'widgetName',
                 message: 'What do you want to call your widget?',
-                default: 'AppsNgen Web Widget'
+                default: this.appname
+            },
+            {
+                name: 'widgetDescription',
+                message: 'How would you describe your widget?',
+                default: this.appname + ' description'
             }
         ];
 
         this.prompt(prompts, function (props) {
-            this.widgetName = props.widgetName;
+            this.props = props;
+            this.props.widgetId = _s.slugify(this.props.widgetName);
 
             done();
         }.bind(this));
     },
+    writing: {
+        projectFiles: function () {
+            var packageInfo = {
+                name: this.props.widgetId, // package name same as widget id
+                description: this.props.widgetDescription
+            };
 
-    app: function () {
-        this.mkdir('documentation');
+            copyFiles(this, [
+                'Gruntfile.js',
+                'LICENSE',
+                'README.md'
+            ]);
+            copyTemplates(this, [
+                '_package.json',
+                '_bower.json'
+            ], packageInfo);
+        },
+        src: function () {
+            var metadata = {
+                id: this.props.widgetId,
+                name: this.props.widgetName,
+                description: this.props.widgetDescription
+            };
 
-        this.mkdir('src');
+            copyFiles(this, [
+                'src/index.html',
+                'src/js/greeting.js',
+                'src/js/greeting.ui.js',
+                'src/js/debug.js',
+                'src/js/widget.js',
+                'src/styles'
+            ]);
 
-        this.mkdir('src/css');
-        this.copy('src/css/ie8.css', 'src/css/ie8.css');
-        this.copy('src/css/widget.less', 'src/css/widget.less');
-        this.copy('src/css/widget.large.less', 'src/css/widget.large.less');
-        this.copy('src/css/widget.medium.less', 'src/css/widget.medium.less');
-        this.copy('src/css/widget.small.less', 'src/css/widget.small.less');
+            copyTemplates(this, [
+                'src/_application.xml'
+            ], metadata);
 
-        this.mkdir('src/images');
-        this.mkdir('src/fonts');
-
-        this.mkdir('src/js');
-        this.mkdir('src/js/dependencies');
-        this.copy('src/js/widget.js', 'src/js/widget.js');
-        this.copy('src/js/widget.ui.js', 'src/js/widget.ui.js');
-        this.copy('src/js/debug.js', 'src/js/debug.js');
-        this.copy('src/js/launcher.js', 'src/js/launcher.js');
-
-        this.copy('src/index.html', 'src/index.html');
-        this.template('src/_application.xml', 'src/application.xml');
-
-        this.mkdir('tests');
-        this.mkdir('tests/mocks');
-        this.copy('tests/mocks/widget.ui.mock.js', 'tests/mocks/widget.ui.mock.js');
-
-        this.mkdir('tests/specs');
-        this.copy('tests/specs/widget.spec.js', 'tests/specs/widget.spec.js');
-
-        this.copy('Gruntfile.js', 'Gruntfile.js');
-        this.copy('LICENSE', 'LICENSE');
-        this.copy('README.md', 'README.md');
-
-        this.template('_bower.json', 'bower.json');
-        this.template('_package.json', 'package.json');
+            createDirectories([
+                'src/images',
+                'src/fonts'
+            ]);
+        },
+        tests: function () {
+            copyFiles(this, [
+                'tests'
+            ]);
+        },
+        documentation: function () {
+            createDirectories([
+                'documentation'
+            ]);
+        }
+    },
+    install: function () {
+        this.installDependencies({
+            bower: false,
+            callback: function () {
+                this.spawnCommand('grunt');
+            }.bind(this)
+        });
     }
 });
-
-module.exports = AppsngenGenerator;

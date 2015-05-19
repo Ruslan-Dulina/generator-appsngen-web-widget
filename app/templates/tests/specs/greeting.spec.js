@@ -1,10 +1,10 @@
-describe('Widget module', function () {
+describe('Greeting module', function () {
     it('sets greeting', function () {
-        var uiMock = new webWidget.WidgetUI();
+        var uiMock = new widget.GreetingUI();
         var prefsMock = {
             greeting: 'testGreeting'
         };
-        var target = new webWidget.Widget({
+        var target = new widget.Greeting({
             ui: uiMock,
             prefs: prefsMock
         });

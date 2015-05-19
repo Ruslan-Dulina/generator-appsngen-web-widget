@@ -1,16 +1,26 @@
 (function (exports) {
-    'use strict';
-    var webWidget = exports.webWidget || {};
+    //'use strict';
 
-    var Widget = function (options) {
-        this.ui = options.ui;
-        this.prefs = options.prefs;
-    };
+    var appsngen = exports.appsngen;
+    var widget = exports.widget || {};
+    var console = exports.console || { log: function () { return; } };
 
-    Widget.prototype.init = function () {
-        this.ui.setGreeting(this.prefs.greeting);
-    };
+    appsngen.ready(function (eventContext) {
+        var prefs = appsngen.prefs.get('greeting');
+        var ui = new widget.GreetingUI({
+            containerId: 'widget'
+        });
+        var greeting = new widget.Greeting({
+            ui: ui,
+            prefs: prefs
+        });
 
-    webWidget.Widget = Widget;
-    exports.webWidget = webWidget;
-}(this));
+        if (widget.debug) {
+            console.log('widget launch');
+        }
+
+        greeting.init();
+    });
+
+    exports.widget = widget;
+}(window));

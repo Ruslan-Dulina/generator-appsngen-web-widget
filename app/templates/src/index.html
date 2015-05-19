@@ -1,23 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html data-version="%%versionstring%%">
 <head>
-    <!-- ref:css css/styles.concat.css -->
-    <link rel="stylesheet" type="text/css" href="css/ie8.css" />
-    <!-- endref -->
+    <!-- build:css styles/widget.concat.css -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <link rel="stylesheet" type="text/css" href="styles/widget.css" />
+    <!-- endbuild -->
 
-    <link rel="stylesheet" type="text/css" href="css/widget.less" />
-    <link media="screen and (max-width: 350px)" rel="stylesheet" type="text/css" href="css/widget.small.less" />
-    <link media="screen and (min-width: 351px) and (max-width: 679px)" rel="stylesheet" type="text/css" href="css/widget.medium.less" />
-    <link media="screen and (min-width: 650px)" rel="stylesheet" type="text/css" href="css/widget.large.less" />
-
-    <!-- ref:js js/widget.concat.js -->
-    <script type="text/javascript" src="js/dependencies/respond/respond.src.js"></script>
-    <script type="text/javascript" src="js/dependencies/jquery/jquery.js"></script>
-    <script type="text/javascript" src="js/debug.js"></script>
-    <script type="text/javascript" src="js/widget.ui.js"></script>
-    <script type="text/javascript" src="js/widget.js"></script>
-    <script type="text/javascript" src="js/launcher.js"></script>
-    <!-- endref -->
+    <!-- build:less styles/widget.concat.less -->
+    <link rel="stylesheet" type="text/css" href="styles/widget.less" />
+    <!-- endbuild -->
 </head>
 <body>
 <div class="widget" id="widget">
@@ -27,6 +19,13 @@
     <p class="medium-dimension">Medium dimension widget</p>
     <p class="large-dimension">Large dimension widget</p>
 </div>
+<!-- build:js js/widget.concat.js -->
+<!-- bower:js -->
+<!-- endbower -->
+<script type="text/javascript" src="js/greeting.ui.js"></script>
+<script type="text/javascript" src="js/greeting.js"></script>
+<script type="text/javascript" src="js/widget.js"></script>
+<!-- endbuild -->
 </body>
 </html>
 

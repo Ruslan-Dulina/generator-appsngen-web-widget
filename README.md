@@ -45,15 +45,15 @@ If you'd like to get to know Yeoman better and meet some of his friends, [Grunt]
 
 After widget template generated it has following structure:
 
+|-- bower_components
 |-- dist  
 |-- documentation  
-|-- node modules  
+|-- node_modules
 |-- src  
-|&nbsp;&nbsp;&nbsp;&nbsp;|-- css  
+|&nbsp;&nbsp;&nbsp;&nbsp;|-- styles
 |&nbsp;&nbsp;&nbsp;&nbsp;|-- fonts  
 |&nbsp;&nbsp;&nbsp;&nbsp;|-- images  
-|&nbsp;&nbsp;&nbsp;&nbsp;|-- js  
-|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-- dependencies  
+|&nbsp;&nbsp;&nbsp;&nbsp;|-- js
 |&nbsp;&nbsp;&nbsp;&nbsp;|index.html  
 |&nbsp;&nbsp;&nbsp;&nbsp;|application.xml  
 |-- tests  
@@ -63,9 +63,10 @@ After widget template generated it has following structure:
 |Gruntfile.js  
 |package.json  
 
+* `/bower_components` - automatically generated folder with widget build or test run results output.
 * `/dist` - automatically generated folder with widget build or test run results output.
 * `/documentation` - folder for placing documentation about widget.
-* `/node modules` - node modules used for widget building.
+* `/node_modules` - node modules used for widget building.
 * `/src` - widget sources.
 * `/src/application.xml` - config with widget metadata.
 * `/src/index.html` - widget main page.
@@ -82,16 +83,22 @@ Build development version of widget, without files minification:
 $ grunt dev
 ```
 
+Build development version of widget automatically after any change:
+
+```
+$ grunt dev-watch
+```
+
 Build production version of widget, with files minification:
 
 ```
 $ grunt 
 ```
 
-Run [JSLint](http://www.jslint.com/):
+Run js and less/css linters:
 
 ```
-$ grunt jslint-check
+$ grunt lint
 ```
 
 Run [Jasmine](http://jasmine.github.io/2.0/introduction.html) tests with code coverage:

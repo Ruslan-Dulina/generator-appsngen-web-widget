@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Module>
-    <ModulePrefs id="<%= _.slugify(widgetName) %>"
-                 title="<%= widgetName %>"
-                 description="Your cool widget description" >
+    <ModulePrefs id="<%= id %>"
+                 title="<%= name %>"
+                 description="<%= description %>" >
     </ModulePrefs>
 
     <Metadata>
         <Information>
             <![CDATA[
-			Your cool widet info
+			<%= description %>
 		]]>
         </Information>
         <Categories>Examples</Categories>
