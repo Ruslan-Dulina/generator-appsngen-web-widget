@@ -1,3 +1,5 @@
+/* usually we do not use css in widgets but such case is possible
+   this file added as example */
 body {
-    background: red;
+    padding: 0;
 }

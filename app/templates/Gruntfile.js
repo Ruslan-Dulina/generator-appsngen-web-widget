@@ -44,10 +44,23 @@ module.exports = function (grunt) {
             afterlint: []
         },
         /* insert bower scripts and styles into html (do it manually only when you have a strong reason for it)
-         *  if bower.json updated and you want to see how scripts are inserted just run grunt wiredep */
+         * if bower.json updated and you want to see how scripts are inserted just run grunt wiredep
+         * for appsngen needs less support where added */
         wiredep: {
             html: {
                 src: ['<%= meta.src %>/index.html']
+            },
+            options: {
+                fileTypes: {
+                    html: {
+                        detect: {
+                            less: /<link.*href=['"]([^'"]+)/gi
+                        },
+                        replace: {
+                            less: '<link rel="stylesheet" href="{{filePath}}" />'
+                        }
+                    }
+                }
             }
         },
         /* copies files which are used by widget 'as is'
@@ -81,7 +94,7 @@ module.exports = function (grunt) {
         concat: {
             debug: {
                 src: [
-                    '<%= meta.out %>/<%= meta.widgetName %>/js/debug.js',
+                    '<%= meta.src %>/js/debug.js',
                     '<%= meta.out %>/<%= meta.widgetName %>/js/widget.concat.js'
                 ],
                 dest: '<%= meta.out %>/<%= meta.widgetName %>/js/widget.concat.js'
@@ -133,8 +146,7 @@ module.exports = function (grunt) {
         htmlmin: {
             dist: {
                 files: {
-                    '<%= meta.out %>/<%= meta.widgetName %>/index.html':
-                        '<%= meta.out %>/<%= meta.widgetName %>/index.html'
+                    '<%= meta.out %>/<%= meta.widgetName %>/index.html': '<%= meta.out %>/<%= meta.widgetName %>/index.html'
                 },
                 options: {
                     removeComments: true,
@@ -199,22 +211,18 @@ module.exports = function (grunt) {
         /* runs csslint over the widget styles */
         lesslint: {
             options: {
-                failOnError: false
+                failOnError: false,
+                formatters: [
+                    {
+                        id: 'csslint-xml',
+                        dest: '<%= meta.out %>/lint/styles/lint.xml'
+                    }
+                ]
             },
-            toConsole: {
-                src: ['<%= meta.src %>/styles/**/*.less', '<%= meta.src %>/styles/**/*.css']
-            },
-            toFile: {
-                src: ['<%= meta.src %>/styles/**/*.less', '<%= meta.src %>/styles/**/*.css'],
-                options: {
-                    formatters: [
-                        {
-                            id: 'csslint-xml',
-                            dest: '<%= meta.out %>/lint/styles/lint.xml'
-                        }
-                    ]
-                }
-            }
+            src: [
+                '<%= meta.src %>/styles/widget.less',
+                '<%= meta.src %>/styles/widget.css'
+            ]
         },
         /* runs dev task if some changes where made in widget source */
         watch: {
@@ -255,6 +263,7 @@ module.exports = function (grunt) {
     // dev task. The same as  prod but without minification.
     grunt.registerTask('dev', [
         'clean:beforebuild',
+        'clean:beforelint',
         'wiredep',
         'copy',
         'useminPrepareDev',
@@ -262,9 +271,10 @@ module.exports = function (grunt) {
         'concat:debug',
         'usemin',
         'compress',
+        'jshint',
+        'lesslint',
         'clean:afterbuild',
-        'jshint:toConsole',
-        'lesslint:toConsole'
+        'clean:afterlint'
     ]);
 
     // dev-watch task. will run dev task each time developer changed something (useful for devbox).

@@ -104,6 +104,10 @@ module.exports = yeoman.generators.Base.extend({
                 'src/index.html',
                 'src/js/greeting.js',
                 'src/js/greeting.ui.js',
+                'src/js/event-builder.js',
+                'src/js/event-builder.ui.js',
+                'src/js/request-builder.js',
+                'src/js/request-builder.ui.js',
                 'src/js/debug.js',
                 'src/js/widget.js',
                 'src/styles'

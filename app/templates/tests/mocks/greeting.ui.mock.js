@@ -4,7 +4,8 @@
     widget.GreetingUI = function (options) {
     };
 
-    widget.GreetingUI.prototype.setGreeting = function () {};
+    widget.GreetingUI.prototype.setGreetings = function () {};
+    widget.GreetingUI.prototype.setGreetingsColor = function () {};
 
     exports.widget = widget;
 }(window));

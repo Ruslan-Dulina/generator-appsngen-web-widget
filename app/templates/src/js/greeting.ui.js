@@ -4,12 +4,20 @@
 
     var GreetingUI = function (options) {
         this.$container = $('#' + options.containerId);
+        this.$greeting = this.$container.find('.greeting-text');
     };
 
-    GreetingUI.prototype.setGreeting = function (message) {
-        var $greeting = this.$container.find('#greeting');
+    GreetingUI.prototype.setGreetings = function (greetings) {
+        var i;
 
-        $greeting.text(message);
+        this.$greeting.html('');
+        for (i = 0; i < greetings.length; i++) {
+            this.$greeting.append('<span>' + greetings[i] + '</span><br/>');
+        }
+    };
+
+    GreetingUI.prototype.setGreetingsColor = function (color) {
+        this.$greeting.css('color', color);
     };
 
     widget.GreetingUI = GreetingUI;

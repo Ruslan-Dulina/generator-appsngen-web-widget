@@ -12,14 +12,56 @@
 		]]>
         </Information>
         <Categories>Examples</Categories>
-        <SupportedDimensions>LARGE | MEDIUM | SMALL</SupportedDimensions>
+        <DataSources>
+            <Source>epam_systems.mashupengine</Source>
+        </DataSources>
+        <Events>
+            <Event>
+                <Name>SINGLE_INSTRUMENT</Name>
+                <Subscribe/>
+                <Publish/>
+            </Event>
+            <Event>
+                <Name>MULTIPLE_INSTRUMENTS</Name>
+                <Subscribe/>
+                <Publish/>
+            </Event>
+        </Events>
+        <SupportedDimensions>MEDIUM</SupportedDimensions>
     </Metadata>
-
     <UserPref name="greeting"
               display_name="Preferred greeting"
               datatype="text"
-              default_value="Hello, World!" />
+              default_value="Hello, World!"
+              group_name="Greeting Customization"
+              description="Example of text preference." />
 
+    <UserPref name="numberOfGreetings"
+              display_name="Number of greetings"
+              datatype="enum"
+              default_value="1"
+              group_name="Greeting Customization"
+              description="Example of enumerated preference.">
+        <EnumValue value="1" display_value="1" />
+        <EnumValue value="3" display_value="3" />
+        <EnumValue value="5" display_value="5" />
+    </UserPref>
+
+    <!-- Technical Indicators preferences -->
+    <UserPref name="changeColor"
+              display_name="Use custom color for greeting"
+              datatype="bool"
+              default_value="true"
+              group_name="Greeting Customization"
+              description="Example of boolean preference.">
+    </UserPref>
+    <UserPref name="greetingCustomColor"
+              display_name="Greeting custom color"
+              datatype="color"
+              default_value="#FF0000"
+              group_name="Greeting Customization"
+              description="Example of color preference.">
+    </UserPref>
     <Content type="html" href="index.html">
     </Content>
 </Module>
