@@ -59,13 +59,58 @@ module.exports = yeoman.generators.Base.extend({
         var prompts = [
             {
                 name: 'widgetName',
-                message: 'What do you want to call your widget?',
+                message: 'Enter widget name:',
                 default: this.appname
             },
             {
                 name: 'widgetDescription',
-                message: 'How would you describe your widget?',
+                message: 'Enter widget description:',
                 default: this.appname + ' description'
+            },
+            {
+                name: 'enablePreferencesSupport',
+                message: 'Include preferences usage example',
+                type: 'confirm',
+                default: true
+            },
+            {
+                name: 'enableEventsSupport',
+                message: 'Include events usage example:',
+                type: 'confirm',
+                default: true
+            },
+            {
+                name: 'enableDataSourceSupport',
+                message: 'Include data sources usage example:',
+                type: 'confirm',
+                default: true
+            },
+            {
+                when: function (props) {
+                    return props.enableDataSourceSupport;
+                },
+                name: 'enableQuotesSupport',
+                message: 'Include quotes data source usage example:',
+                type: 'confirm',
+                default: true
+            },
+            {
+                when: function (props) {
+                    return props.enableDataSourceSupport;
+                },
+                name: 'enableTimeSeriesSupport',
+                message: 'Include time series data source usage example:',
+                type: 'confirm',
+                default: true
+            },
+            {
+                when: function (props) {
+                    return props.enableDataSourceSupport;
+                },
+                name: 'enableNewsSupport',
+                message: 'Include news data source usage example:',
+                type: 'confirm',
+                default: true
             }
         ];
 
@@ -80,7 +125,9 @@ module.exports = yeoman.generators.Base.extend({
         projectFiles: function () {
             var packageInfo = {
                 name: this.props.widgetId, // package name same as widget id
-                description: this.props.widgetDescription
+                description: this.props.widgetDescription,
+                includeCodeMirror: Boolean(this.props.enableEventsSupport) ||
+                    Boolean(this.props.enableDataSourceSupport)
             };
 
             copyFiles(this, [
@@ -94,28 +141,58 @@ module.exports = yeoman.generators.Base.extend({
             ], packageInfo);
         },
         src: function () {
-            var metadata = {
+            var metadataXmlTemplateData = {
                 id: this.props.widgetId,
                 name: this.props.widgetName,
-                description: this.props.widgetDescription
+                description: this.props.widgetDescription,
+                includeDataSource: Boolean(this.props.enableDataSourceSupport),
+                includePreferences: Boolean(this.props.enablePreferencesSupport),
+                includeEvents: Boolean(this.props.enableEventsSupport)
             };
-
-            copyFiles(this, [
-                'src/index.html',
-                'src/js/greeting.js',
-                'src/js/greeting.ui.js',
-                'src/js/event-builder.js',
-                'src/js/event-builder.ui.js',
-                'src/js/request-builder.js',
-                'src/js/request-builder.ui.js',
+            var htmlAndJsTemplateData = {
+                includeDataSourceBuilder: Boolean(this.props.enableDataSourceSupport),
+                includeQuotesDataSource: Boolean(this.props.enableQuotesSupport),
+                includeTimeSeriesDataSource: Boolean(this.props.enableTimeSeriesSupport),
+                includeNewsDataSource: Boolean(this.props.enableNewsSupport),
+                includeEventBuilder: Boolean(this.props.enableEventsSupport),
+                includeGreeting: Boolean(this.props.enablePreferencesSupport)
+            };
+            var srcFiles = [
                 'src/js/debug.js',
-                'src/js/widget.js',
                 'src/styles'
-            ]);
+            ];
+
+            if (htmlAndJsTemplateData.includeDataSourceBuilder) {
+                srcFiles = srcFiles.concat([
+                    'src/js/request-builder.js',
+                    'src/js/request-builder.ui.js'
+                ]);
+            }
+
+            if (htmlAndJsTemplateData.includeGreeting) {
+                srcFiles = srcFiles.concat([
+                    'src/js/greeting.js',
+                    'src/js/greeting.ui.js'
+                ]);
+            }
+
+            if (htmlAndJsTemplateData.includeEventBuilder) {
+                srcFiles = srcFiles.concat([
+                    'src/js/event-builder.js',
+                    'src/js/event-builder.ui.js'
+                ]);
+            }
+
+            copyFiles(this, srcFiles);
 
             copyTemplates(this, [
                 'src/_application.xml'
-            ], metadata);
+            ], metadataXmlTemplateData);
+
+            copyTemplates(this, [
+                'src/_index.html',
+                'src/js/_widget.js'
+            ], htmlAndJsTemplateData);
 
             createDirectories([
                 'src/images',

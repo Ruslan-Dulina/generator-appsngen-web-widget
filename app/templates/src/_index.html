@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html data-version="%%versionstring%%">
+<head>
+    <!-- build:css styles/widget.concat.css -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <link rel="stylesheet" type="text/css" href="styles/widget.css"/>
+    <!-- endbuild -->
+
+    <!-- build:less styles/widget.concat.less -->
+    <!-- bower:less -->
+    <!-- endbower -->
+    <link rel="stylesheet" type="text/css" href="styles/widget.less"/>
+    <!-- endbuild -->
+</head>
+<body>
+<div class="widget" id="widget">
+<div class="navbar navbar-default">
+    <div class="navbar-brand">Sample widget with support of:</div>
+</div>
+
+<div class="scrollable-container">
+<div class="scrollable-data">
+<div class="panel-group features-accordion" id="features-accordion">
+<% if (includeGreeting) { %>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#features-accordion"
+               href="#preferences">Widget Preferences</a>
+        </h4>
+    </div>
+    <div id="preferences" class="panel-collapse collapse in">
+        <div class="panel-body">
+            Preferred greeting:
+            <div class="greeting-text">
+            </div>
+        </div>
+    </div>
+</div>
+<% } %>
+<% if (includeEventBuilder) { %>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#features-accordion"
+               href="#events">Events Context</a>
+        </h4>
+    </div>
+    <div id="events" class="panel-collapse collapse">
+        <div class="panel-body">
+            <!-- EVENTS MARKUP GOES HERE -->
+            <div class="error error-alert" style="display: none">
+                <div class="error-message">
+                    <button type="button" class="close"><span>&times;</span></button>
+                    <p>
+                        Sorry, error occurred.
+                    </p>
+                </div>
+            </div>
+            <button type="button" class="btn btn-success submit-button">Publish Event</button>
+            <div class="dropdown dropdown-filtered">
+                <button class="btn btn-default dropdown-toggle event-selector" type="button"
+                        id="event-selector"
+                        data-toggle="dropdown">
+                    <span class="text">Select Channel</span>
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="event-selector">
+                    <li role="presentation" data-value="SINGLE_INSTRUMENT" data-filtered="true">
+                        <a role="menuitem" tabindex="-1" href="javascript:void(0)">
+                            SINGLE_INSTRUMENT</a>
+                    </li>
+                    <li role="presentation" data-value="MULTIPLE_INSTRUMENTS" data-filtered="true">
+                        <a role="menuitem" tabindex="-1" href="javascript:void(0)">
+                            MULTIPLE_INSTRUMENTS</a>
+                    </li>
+                </ul>
+            </div>
+            <h3>Published Event Body:</h3>
+
+            <div class="outgoing-event-editor"></div>
+            <h3>Incoming Events:</h3>
+
+            <div class="incoming-event-editor"></div>
+        </div>
+    </div>
+</div>
+<% } %>
+<% if (includeQuotesDataSource) { %>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#features-accordion"
+               href="#quotes-request-builder">Quotes Data</a>
+        </h4>
+    </div>
+    <div id="quotes-request-builder" class="panel-collapse collapse">
+        <div class="panel-body waiting-container">
+            <!--  DATASOURCE MARKUP GOES HERE  -->
+            <div class="error error-alert" style="display: none">
+                <div class="error-message">
+                    <button type="button" class="close"><span>&times;</span></button>
+                    <p>
+                        Sorry, error occurred.
+                    </p>
+                </div>
+            </div>
+            <button type="button" class="btn btn-success submit-button">Make Request</button>
+            <h3>Request Body:</h3>
+
+            <div class="request-editor"></div>
+            <h3>Response Body:</h3>
+
+            <div class="response-editor"></div>
+            <div class="waiting" style="display: none;">
+                <div class="waiter">
+                    <div class='bar-1'></div>
+                    <div class='bar-2'></div>
+                    <div class='bar-3'></div>
+                    <div class='bar-4'></div>
+                    <div class='bar-5'></div>
+                    <div class='bar-6'></div>
+                    <div class='bar-7'></div>
+                    <div class='bar-8'></div>
+                    <div class='bar-9'></div>
+                    <div class='bar-10'></div>
+                    <div class='bar-11'></div>
+                    <div class='bar-12'></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<% } %>
+<% if (includeTimeSeriesDataSource) { %>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#features-accordion"
+               href="#time-series-request-builder">Time Series Data</a>
+        </h4>
+    </div>
+    <div id="time-series-request-builder" class="panel-collapse collapse">
+        <div class="panel-body waiting-container">
+            <!--  DATASOURCE MARKUP GOES HERE  -->
+            <div class="error error-alert" style="display: none">
+                <div class="error-message">
+                    <button type="button" class="close"><span>&times;</span></button>
+                    <p>
+                        Sorry, error occurred.
+                    </p>
+                </div>
+            </div>
+            <button type="button" class="btn btn-success submit-button">Make Request</button>
+            <h3>Request Body:</h3>
+
+            <div class="request-editor"></div>
+            <h3>Response Body:</h3>
+
+            <div class="response-editor"></div>
+            <div class="waiting" style="display: none;">
+                <div class="waiter">
+                    <div class='bar-1'></div>
+                    <div class='bar-2'></div>
+                    <div class='bar-3'></div>
+                    <div class='bar-4'></div>
+                    <div class='bar-5'></div>
+                    <div class='bar-6'></div>
+                    <div class='bar-7'></div>
+                    <div class='bar-8'></div>
+                    <div class='bar-9'></div>
+                    <div class='bar-10'></div>
+                    <div class='bar-11'></div>
+                    <div class='bar-12'></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<% } %>
+<% if (includeNewsDataSource) { %>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#features-accordion"
+               href="#news-request-builder">News Data</a>
+        </h4>
+    </div>
+    <div id="news-request-builder" class="panel-collapse collapse">
+        <div class="panel-body waiting-container">
+            <!--  DATASOURCE MARKUP GOES HERE  -->
+            <div class="error error-alert" style="display: none">
+                <div class="error-message">
+                    <button type="button" class="close"><span>&times;</span></button>
+                    <p>
+                        Sorry, error occurred.
+                    </p>
+                </div>
+            </div>
+            <button type="button" class="btn btn-success submit-button">Make Request</button>
+            <h3>Request Body:</h3>
+
+            <div class="request-editor"></div>
+            <h3>Response Body:</h3>
+
+            <div class="response-editor"></div>
+            <div class="waiting" style="display: none;">
+                <div class="waiter">
+                    <div class='bar-1'></div>
+                    <div class='bar-2'></div>
+                    <div class='bar-3'></div>
+                    <div class='bar-4'></div>
+                    <div class='bar-5'></div>
+                    <div class='bar-6'></div>
+                    <div class='bar-7'></div>
+                    <div class='bar-8'></div>
+                    <div class='bar-9'></div>
+                    <div class='bar-10'></div>
+                    <div class='bar-11'></div>
+                    <div class='bar-12'></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<% } %>
+</div>
+</div>
+</div>
+</div>
+<div class="waiting global-waiting">
+    <div class="waiter">
+        <div class='bar-1'></div>
+        <div class='bar-2'></div>
+        <div class='bar-3'></div>
+        <div class='bar-4'></div>
+        <div class='bar-5'></div>
+        <div class='bar-6'></div>
+        <div class='bar-7'></div>
+        <div class='bar-8'></div>
+        <div class='bar-9'></div>
+        <div class='bar-10'></div>
+        <div class='bar-11'></div>
+        <div class='bar-12'></div>
+    </div>
+</div>
+<!-- build:js js/widget.concat.js -->
+<!-- bower:js -->
+<!-- endbower -->
+<% if (includeGreeting) { %>
+<script type="text/javascript" src="js/greeting.ui.js"></script>
+<script type="text/javascript" src="js/greeting.js"></script>
+<% } %>
+<% if (includeDataSourceBuilder) { %>
+<script type="text/javascript" src="js/request-builder.ui.js"></script>
+<script type="text/javascript" src="js/request-builder.js"></script>
+<% } %>
+<% if (includeEventBuilder) { %>
+<script type="text/javascript" src="js/event-builder.ui.js"></script>
+<script type="text/javascript" src="js/event-builder.js"></script>
+<% } %>
+<script type="text/javascript" src="js/widget.js"></script>
+<!-- endbuild -->
+</body>
+</html>
+

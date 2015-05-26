@@ -6,10 +6,12 @@
         "jquery": "~2.1.1",
         "bootstrap": "~3.3.4",
         "appsngen-bootstrap": "~0.1.2",
+<% if (includeCodeMirror) { %>
         "codemirror": "~5.3.0",
-        "jScrollPane": "~2.0.20"
-    },
-    "overrides": {
+        <% } %>
+"jScrollPane": "~2.0.20"
+},
+"overrides": {
         "bootstrap": {
             "main": [
                 "dist/js/bootstrap.js"
@@ -22,6 +24,7 @@
                 "extensions/js/dropdown.ext.js"
             ]
         },
+        <% if (includeCodeMirror) { %>
         "codemirror": {
             "main": [
                 "lib/codemirror.js",
@@ -29,6 +32,7 @@
                 "lib/codemirror.css"
             ]
         },
+        <% } %>
         "jScrollPane": {
             "main": [
                 "./script/jquery.mousewheel.js",
