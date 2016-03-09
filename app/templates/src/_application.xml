@@ -2,7 +2,8 @@
 <Module>
     <ModulePrefs id="<%= id %>"
                  title="<%= name %>"
-                 description="<%= description %>" >
+                 description="<%= description %>"
+                 thumbnail="src/images/favicon.ico" >
     </ModulePrefs>
 
     <Metadata>
