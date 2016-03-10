@@ -4,13 +4,21 @@ module.exports = function (grunt) {
     var versionStringPlaceholder = '%%versionstring%%';
     var packageJson = grunt.file.readJSON('package.json');
     var versionString = packageJson.version + ' ' + packageJson.gitCommitHash + ' ' + packageJson.jenkinsBuildNumber;
+    var credentials = {
+        username: '',
+        password: ''
+    };
 
+    if (grunt.file.exists('./credentials.json')) {
+        credentials = grunt.file.readJSON('./credentials.json').user;
+    }
     require('load-grunt-tasks')(grunt, {
         pattern: [
             'grunt-*',
             '!grunt-template-jasmine-istanbul'
         ]
     });
+    grunt.loadNpmTasks('grunt-appsngen-widget-upload');
 
     // Project configuration.
     grunt.initConfig({
@@ -242,6 +250,16 @@ module.exports = function (grunt) {
                     { expand: true, src: ['**/*'], cwd: '<%= meta.out %>/<%= meta.widgetName %>' }
                 ]
             }
+        },
+        appsngen_widget_upload: {
+            options: {
+                username: credentials.username,
+                password: credentials.password,
+                serviceAddress: 'https://dev.appsngen.com',
+                zipFilePath: '<%= meta.out %>/<%= meta.widgetName %>.zip',
+                replaceIfExists:true,
+                openInBrowserAfterUpload: true
+            }
         }
     });
 
@@ -293,6 +311,10 @@ module.exports = function (grunt) {
         'jshint',
         'lesslint',
         'clean:afterlint'
+    ]);
+
+    grunt.registerTask('appsngen-widget-upload', [
+        'appsngen_widget_upload'
     ]);
 
     /*
