@@ -137,7 +137,8 @@ module.exports = yeoman.generators.Base.extend({
             ]);
             copyTemplates(this, [
                 '_package.json',
-                '_bower.json'
+                '_bower.json',
+                '_.appsngenrc'
             ], packageInfo);
         },
         src: function () {
