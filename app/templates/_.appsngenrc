@@ -1,0 +1,8 @@
+{
+    "username": "your_username",
+    "password": "your_password",
+    "serviceAddress": "https://dev.appsngen.com",
+    "zipFilePath": "./dist/<%= name %>.zip",
+    "replaceIfExists": true,
+    "openInBrowserAfterUpload": true
+}
