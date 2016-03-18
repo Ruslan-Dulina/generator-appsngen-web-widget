@@ -5,4 +5,4 @@ git:
   depth: 3
 before_install: npm install -g jshint
 install: true
-script: true
+script: echo $TRAVIS_TEST_RESULT
