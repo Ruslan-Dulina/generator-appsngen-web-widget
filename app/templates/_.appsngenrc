@@ -1,6 +1,4 @@
 {
-    "username": "your_username",
-    "password": "your_password",
     "serviceAddress": "https://www.appsngen.com",
     "zipFilePath": "./dist/<%= name %>.zip",
     "replaceIfExists": true,
