@@ -41,5 +41,5 @@
     },
     "scripts": {
        "test": "jshint app"
-   },
+   }
 }
