@@ -8,4 +8,3 @@ install: true
 script: true
 after_success: 
 - npm test
-- echo $TRAVIS_TEST_RESULT
