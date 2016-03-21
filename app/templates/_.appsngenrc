@@ -1,5 +1,4 @@
 {
-    "serviceAddress": "https://www.appsngen.com",
     "zipFilePath": "./dist/<%= name %>.zip",
     "replaceIfExists": true,
     "openInBrowserAfterUpload": true
