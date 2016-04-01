@@ -1,5 +1,6 @@
 {
     "zipFilePath": "./dist/<%= name %>.zip",
     "replaceIfExists": true,
+    "openInBrowserAfterUpload": true,
     "port": 8000
 }
