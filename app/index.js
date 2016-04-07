@@ -48,6 +48,21 @@ var createDirectories = function (directoryNames) {
 };
 
 module.exports = yeoman.generators.Base.extend({
+    constructor: function () {
+        yeoman.generators.Base.apply(this, arguments);
+
+        this.argument('path', {
+            type: String,
+            optional: true,
+            defaults: '.'
+        });
+        try {
+            process.chdir(path.resolve(this.path));
+        } catch (err) {
+            console.error(err.toString());
+            process.exit(1);
+        }
+    },
     prompting: function () {
         var done = this.async();
 
