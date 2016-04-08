@@ -1,5 +1,5 @@
 (function () {
-    // 'use strict';
+    'use strict';
 
     /*globals require, console, module, process*/
 
