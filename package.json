@@ -40,6 +40,6 @@
         "yo": ">=1.0.0"
     },
     "scripts": {
-       "test": "jshint app"
+       "test": "jshint app/index.js"
    }
 }
