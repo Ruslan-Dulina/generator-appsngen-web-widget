@@ -57,6 +57,7 @@ module.exports = yeoman.generators.Base.extend({
             defaults: '.'
         });
         try {
+            mkdirp.sync(path.resolve(this.path));
             process.chdir(path.resolve(this.path));
         } catch (err) {
             console.error(err.toString());
