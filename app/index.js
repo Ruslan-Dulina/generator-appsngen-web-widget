@@ -70,6 +70,7 @@
         },
         prompting: function () {
             var done = this.async();
+            var widgetName = this.path.split(path.sep).pop();
 
             // Have Yeoman greet the user.
             this.log(yosay(
@@ -80,12 +81,12 @@
                 {
                     name: 'widgetName',
                     message: 'Enter widget name:',
-                    default: this.appname
+                    default: widgetName
                 },
                 {
                     name: 'widgetDescription',
                     message: 'Enter widget description:',
-                    default: this.appname + ' description'
+                    default: widgetName + ' description'
                 },
                 {
                     name: 'enablePreferencesSupport',
