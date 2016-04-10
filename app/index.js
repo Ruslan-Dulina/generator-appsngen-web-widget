@@ -61,6 +61,7 @@
                 defaults: '.'
             });
             try {
+                this.path = path.resolve(this.path);
                 mkdirp.sync(path.resolve(this.path));
                 process.chdir(path.resolve(this.path));
             } catch (err) {
