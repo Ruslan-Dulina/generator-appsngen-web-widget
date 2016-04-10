@@ -35,6 +35,8 @@ Finally, initiate the generator:
 $ yo appsngen-web-widget
 ```
 
+Also you can pass optinal `path` argument to generate widget at specified path.
+
 ### Getting To Know Yeoman
 
 Yeoman has a heart of gold. He's a person with feelings and opinions, but he's very easy to work with. If you think he's too opinionated, he can be easily convinced.
@@ -45,23 +47,23 @@ If you'd like to get to know Yeoman better and meet some of his friends, [Grunt]
 
 After widget template generated it has following structure:
 
-|-- bower_components
-|-- dist  
-|-- documentation  
-|-- node_modules
-|-- src  
-|&nbsp;&nbsp;&nbsp;&nbsp;|-- styles
-|&nbsp;&nbsp;&nbsp;&nbsp;|-- fonts  
-|&nbsp;&nbsp;&nbsp;&nbsp;|-- images  
-|&nbsp;&nbsp;&nbsp;&nbsp;|-- js
-|&nbsp;&nbsp;&nbsp;&nbsp;|index.html  
-|&nbsp;&nbsp;&nbsp;&nbsp;|application.xml  
-|-- tests  
-|&nbsp;&nbsp;&nbsp;&nbsp;|-- mocks  
-|&nbsp;&nbsp;&nbsp;&nbsp;|-- specs  
-|bower.json  
-|Gruntfile.js  
-|package.json  
+|-- bower_components <br />
+|-- dist <br />
+|-- documentation <br />
+|-- node_modules <br />
+|-- src <br />
+|&nbsp;&nbsp;&nbsp;&nbsp;|-- styles <br />
+|&nbsp;&nbsp;&nbsp;&nbsp;|-- fonts <br />
+|&nbsp;&nbsp;&nbsp;&nbsp;|-- images <br />
+|&nbsp;&nbsp;&nbsp;&nbsp;|-- js <br />
+|&nbsp;&nbsp;&nbsp;&nbsp;|index.html <br />
+|&nbsp;&nbsp;&nbsp;&nbsp;|application.xml <br />
+|-- tests <br />
+|&nbsp;&nbsp;&nbsp;&nbsp;|-- mocks <br />
+|&nbsp;&nbsp;&nbsp;&nbsp;|-- specs <br />
+|bower.json <br />
+|Gruntfile.js <br />
+|package.json <br />
 
 * `/bower_components` - automatically generated folder with widget build or test run results output.
 * `/dist` - automatically generated folder with widget build or test run results output.
@@ -107,7 +109,7 @@ Run [Jasmine](http://jasmine.github.io/2.0/introduction.html) tests with code co
 $ grunt test
 ```
 
-After grunt command run, output zip archive will be created at thr `dist` folder. This archive can be uploaded to [Sandbox](https://www.appsngen.com/product/my/applications/list).
+After grunt command run, output zip archive will be created at thr `dist` folder. This archive can be uploaded to [Sandbox](https://www.appsngen.com/product/sandbox/widgets).
 
 
 ## License
