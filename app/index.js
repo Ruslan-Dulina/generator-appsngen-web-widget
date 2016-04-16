@@ -60,6 +60,11 @@
                 optional: true,
                 defaults: '.'
             });
+            this.argument('name', {
+                type: String,
+                optional: true,
+                defaults: ''
+            });
             try {
                 this.path = path.resolve(this.path);
                 mkdirp.sync(path.resolve(this.path));
@@ -68,10 +73,12 @@
                 console.error(err.toString());
                 process.exit(1);
             }
+            if (this.name === '') {
+                this.name = this.path.split(path.sep).pop();
+            }
         },
         prompting: function () {
             var done = this.async();
-            var widgetName = this.path.split(path.sep).pop();
 
             // Have Yeoman greet the user.
             this.log(yosay(
@@ -82,12 +89,12 @@
                 {
                     name: 'widgetName',
                     message: 'Enter widget name:',
-                    default: widgetName
+                    default: this.name
                 },
                 {
                     name: 'widgetDescription',
                     message: 'Enter widget description:',
-                    default: widgetName + ' description'
+                    default: this.name + ' description'
                 },
                 {
                     name: 'enablePreferencesSupport',
