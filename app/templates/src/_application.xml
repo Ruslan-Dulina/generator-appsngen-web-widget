@@ -3,7 +3,7 @@
     <ModulePrefs id="<%= id %>"
                  title="<%= name %>"
                  description="<%= description %>"
-                 thumbnail="src/images/favicon.ico" >
+                 thumbnail="images/favicon.ico" >
     </ModulePrefs>
 
     <Metadata>
