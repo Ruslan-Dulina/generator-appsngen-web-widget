@@ -189,7 +189,8 @@
                 };
                 var srcFiles = [
                     'src/js/debug.js',
-                    'src/styles'
+                    'src/styles',
+                    'src/images/favicon.ico'
                 ];
 
                 if (htmlAndJsTemplateData.includeDataSourceBuilder) {
@@ -225,7 +226,6 @@
                 ], htmlAndJsTemplateData);
 
                 createDirectories([
-                    'src/images',
                     'src/fonts'
                 ]);
             },
