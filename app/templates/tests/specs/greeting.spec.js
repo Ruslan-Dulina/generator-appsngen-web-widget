@@ -14,7 +14,6 @@ describe('Greeting module', function () {
             prefs: prefsMock
         });
 
-        spyOn(uiMock, 'setGreetings');
         target.init();
         expect(uiMock.setGreetings).toHaveBeenCalledWith([prefsMock.greeting, prefsMock.greeting, prefsMock.greeting]);
     });
@@ -32,7 +31,6 @@ describe('Greeting module', function () {
             prefs: prefsMock
         });
 
-        spyOn(uiMock, 'setGreetingsColor');
         target.init();
         expect(uiMock.setGreetingsColor).toHaveBeenCalledWith(prefsMock.greetingCustomColor);
     });
@@ -50,7 +48,7 @@ describe('Greeting module', function () {
             prefs: prefsMock
         });
 
-        spyOn(uiMock, 'setGreetingsColor');
+        uiMock.setGreetingsColor.calls.reset();
         target.init();
         expect(uiMock.setGreetingsColor).not.toHaveBeenCalled();
     });
