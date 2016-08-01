@@ -73,12 +73,10 @@
                 console.error(err.toString());
                 process.exit(1);
             }
-            if (this.name === '') {
-                this.name = this.path.split(path.sep).pop();
-            }
         },
         prompting: function () {
             var done = this.async();
+            var that = this;
 
             // Have Yeoman greet the user.
             this.log(yosay(
@@ -87,8 +85,14 @@
 
             var prompts = [
                 {
+                    when: function () {
+                        return !that.name.trim();
+                    },
+                    validate: function (input) {
+                        return Boolean(input.trim());
+                    },
                     name: 'widgetName',
-                    message: 'Enter widget name:',
+                    message: 'Enter widget name: ',
                     default: this.name
                 },
                 {
@@ -145,6 +149,7 @@
 
             this.prompt(prompts, function (props) {
                 this.props = props;
+                this.props.widgetName = this.props.widgetName || that.name;
                 this.props.widgetId = _s.slugify(this.props.widgetName);
 
                 done();
@@ -180,7 +185,6 @@
                     includeEvents: Boolean(this.props.enableEventsSupport)
                 };
                 var htmlAndJsTemplateData = {
-                    includeDataSourceBuilder: Boolean(this.props.enableDataSourceSupport),
                     includeQuotesDataSource: Boolean(this.props.enableQuotesSupport),
                     includeTimeSeriesDataSource: Boolean(this.props.enableTimeSeriesSupport),
                     includeNewsDataSource: Boolean(this.props.enableNewsSupport),
@@ -190,10 +194,35 @@
                 var srcFiles = [
                     'src/js/debug.js',
                     'src/styles',
-                    'src/images/favicon.ico'
+                    'src/images'
                 ];
 
-                if (htmlAndJsTemplateData.includeDataSourceBuilder) {
+                htmlAndJsTemplateData.notEmpty = htmlAndJsTemplateData.includeNewsDataSource||
+                    htmlAndJsTemplateData.includeEventBuilder || htmlAndJsTemplateData.includeQuotesDataSource ||
+                    htmlAndJsTemplateData.includeGreeting || htmlAndJsTemplateData.includeEventBuilder;
+
+                if (htmlAndJsTemplateData.includeNewsDataSource ||
+                    htmlAndJsTemplateData.includeQuotesDataSource) {
+                    srcFiles = srcFiles.concat([
+                        'src/js/base-builder.ui.js',
+                        'src/js/data-builder.js',
+                        'src/js/data-builder.ui.js',
+                        'src/js/waiting-builder.ui.js'
+                    ]);
+
+                    if (htmlAndJsTemplateData.includeNewsDataSource) {
+                        srcFiles = srcFiles.concat([
+                            'src/js/news-builder.ui.js'
+                        ]);
+                    }
+                    if (htmlAndJsTemplateData.includeQuotesDataSource) {
+                        srcFiles = srcFiles.concat([
+                            'src/js/quotes-builder.ui.js'
+                        ]);
+                    }
+                }
+
+                if (htmlAndJsTemplateData.includeTimeSeriesDataSource) {
                     srcFiles = srcFiles.concat([
                         'src/js/request-builder.js',
                         'src/js/request-builder.ui.js'
