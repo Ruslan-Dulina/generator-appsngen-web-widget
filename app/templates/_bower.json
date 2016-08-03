@@ -3,13 +3,14 @@
     "description": "<%= description %>",
     "version": "0.1.0",
     "dependencies": {
-        "jquery": "~2.1.1",
-        "bootstrap": "~3.3.4",
-        "appsngen-bootstrap": "~0.1.2",
+        "jquery": "2.1.1",
+        "bootstrap": "3.3.4",
+        "appsngen-bootstrap": "0.1.2",
+        "underscore": "1.8.3"
 <% if (includeCodeMirror) { %>
-        "codemirror": "~5.3.0",
+        "codemirror": "5.3.0",
         <% } %>
-"jScrollPane": "~2.0.20"
+        "jScrollPane": "2.0.20"
 },
 "overrides": {
         "bootstrap": {
@@ -41,4 +42,3 @@
         }
     }
 }
-
