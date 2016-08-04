@@ -24,6 +24,10 @@
             'news-data'
             <% } %>
         ];
+        _.templateSettings = {
+            interpolate: /\{\{=(.+?)\}\}/g,
+            evaluate: /\{\{(.+?)\}\}/g
+        };
 
         <% if (includeGreeting) { %>
         // GREETING

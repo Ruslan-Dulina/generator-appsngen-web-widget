@@ -396,5 +396,44 @@
 <% } %>
 <script type="text/javascript" src="js/widget.js"></script>
 <!-- endbuild -->
+<% if (includeQuotesDataSource) { %>
+<script id="quoteValue" type="text/template">
+    {{ _.each(target, function(value){ }}
+    <tr>
+        <td class="dis600" title="{{=value.Name}}">
+            {{=value.Name}}
+        </td>
+        <td title="{{=value.Symbol}}">{{=value.Symbol}}</td>
+        <td title="{{=value.LastPrice}}">{{=value.LastPrice}}</td>
+        <td class="dis600" title="{{=value.Volume}}">{{=value.Volume}}</td>
+        <td title="{{=value.PercentChange}} | {{=value.NetChange}}">
+            <div class="change {{ if(value.NetChange > 0) { }} increase {{ } else if(value.NetChange < 0) { }} decrease {{ } }}">
+                <div>{{=value.PercentChange}}%</div>
+                <div>{{=value.NetChange}}</div>
+            </div>
+        </td>
+    </tr>
+    {{ }); }}
+</script>
+<% } %>
+<% if (includeNewsDataSource) { %>
+<script id="newsValue" type="text/template">
+    <div class="news-item">
+        <a href="#" title="{{=header}}">
+            <div class="news-thumbnail">
+                {{ if (typeof image !== 'undefined') { }}
+                <img src="{{= image.Url }}" alt="{{= image.Title}}">
+                {{ } }}
+            </div>
+            <div class="news-headline">
+                {{=header}}
+            </div>
+        </a>
+        <div class="news-date">
+            {{=date}}
+        </div>
+    </div>
+</script>
+<% } %>
 </body>
 </html>
