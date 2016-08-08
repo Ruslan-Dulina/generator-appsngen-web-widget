@@ -110,6 +110,7 @@
             .subscribe('MULTIPLE_INSTRUMENTS', function (channel, data) {
                 eventBuilder.processEvent(channel, data);
             });
+        <% } %>
 
         scrollApi = $('.scrollable-container').jScrollPane().data('jsp');
         containersIds.forEach(function (el) {
@@ -128,7 +129,6 @@
                 }, 0);
             });
         });
-        <% } %>
 
         <% if (includeGreeting) { %>
         greeting.init();

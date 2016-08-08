@@ -373,7 +373,7 @@
 <script type="text/javascript" src="js/greeting.ui.js"></script>
 <script type="text/javascript" src="js/greeting.js"></script>
 <% } %>
-<% if (includeQuotesDataSource || includeNewsDataSource) { %>
+<% if (includeQuotesDataSource || includeNewsDataSource || includeTimeSeriesDataSource) { %>
 <script type="text/javascript" src="js/base-builder.ui.js"></script>
 <script type="text/javascript" src="js/waiting-builder.ui.js"></script>
 
@@ -385,10 +385,10 @@
 <% if (includeQuotesDataSource) { %>
 <script type="text/javascript" src="js/quotes-builder.ui.js"></script>
 <% } %>
-<% } %>
 <% if (includeTimeSeriesDataSource) { %>
 <script type="text/javascript" src="js/request-builder.ui.js"></script>
 <script type="text/javascript" src="js/request-builder.js"></script>
+<% } %>
 <% } %>
 <% if (includeEventBuilder) { %>
 <script type="text/javascript" src="js/event-builder.ui.js"></script>

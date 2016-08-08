@@ -202,7 +202,8 @@
                     htmlAndJsTemplateData.includeGreeting || htmlAndJsTemplateData.includeEventBuilder;
 
                 if (htmlAndJsTemplateData.includeNewsDataSource ||
-                    htmlAndJsTemplateData.includeQuotesDataSource) {
+                    htmlAndJsTemplateData.includeQuotesDataSource ||
+                    htmlAndJsTemplateData.includeTimeSeriesDataSource) {
                     srcFiles = srcFiles.concat([
                         'src/js/base-builder.ui.js',
                         'src/js/data-builder.js',
