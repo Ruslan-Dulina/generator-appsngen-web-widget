@@ -15,39 +15,135 @@
 </head>
 <body>
 <div class="widget" id="widget">
-<div class="navbar navbar-default">
-    <div class="navbar-brand">Sample widget with support of:</div>
-</div>
-
-<div class="scrollable-container">
-<div class="scrollable-data">
-<div class="panel-group features-accordion" id="features-accordion">
-<% if (includeGreeting) { %>
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h4 class="panel-title">
-            <a data-toggle="collapse" data-parent="#features-accordion"
-               href="#preferences">Widget Preferences</a>
-        </h4>
+    <% if (notEmpty) { %>
+    <div class="navbar navbar-default navbar-heading">
+        <div class="dropdown dropdown-filtered">
+            <button class="btn btn-default dropdown-toggle tab-selector" type="button"
+                    id="tab-selector"
+                    data-toggle="dropdown">
+                <span class="text">Select Channel</span>
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="tab-selector">
+                <% if (includeGreeting) { %>
+                <li role="presentation" data-value="Widget Preferences">
+                    <a data-toggle="tab" role="menuitem" tabindex="-1" href="#widget-preferences">
+                        Widget Preferences</a>
+                </li>
+                <% } %>
+                <% if (includeEventBuilder) { %>
+                <li role="presentation" data-value="Events Context">
+                    <a data-toggle="tab" role="menuitem" tabindex="-1" href="#events-context">
+                        Events Context</a>
+                </li>
+                <% } %>
+                <% if (includeQuotesDataSource) { %>
+                <li role="presentation" data-value="Quotes Data">
+                    <a data-toggle="tab" role="menuitem" tabindex="-1" href="#quotes-data">
+                        Quotes Data</a>
+                </li>
+                <% } %>
+                <% if (includeTimeSeriesDataSource) { %>
+                <li role="presentation" data-value="Time Series Data">
+                    <a data-toggle="tab" role="menuitem" tabindex="-1" href="#time-series-data">
+                        Time Series Data</a>
+                </li>
+                <% } %>
+                <% if (includeNewsDataSource) { %>
+                <li role="presentation" data-value="News Data">
+                    <a data-toggle="tab" role="menuitem" tabindex="-1" href="#news-data">
+                        News Data</a>
+                </li>
+                <% } %>
+            </ul>
+        </div>
     </div>
-    <div id="preferences" class="panel-collapse collapse in">
-        <div class="panel-body">
-            Preferred greeting:
-            <div class="greeting-text">
+    <div class="tab-content scrollable-container">
+    <% if (includeGreeting) { %>
+    <div class="tab-pane fade scrollable-data widget-preferences" id="widget-preferences">
+        <div class="info-column">
+            <div class="description">
+                <h4>
+                    Header
+                </h4>
+                <div id="preferences" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        Preferred greeting:
+                        <div class="greeting-text">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="table">
+                <h4 class="table-header">Tables</h4>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>One LineColumn Header</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>One Line Row 1</td>
+                            <td>0.00</td>
+                        </tr>
+                        <tr>
+                            <td>One Line Row 2</td>
+                            <td>0.00</td>
+                        </tr>
+                        <tr>
+                            <td>One Line Row 3</td>
+                            <td>0.00</td>
+                        </tr>
+                        <tr>
+                            <td>One Line Row 4</td>
+                            <td>0.00</td>
+                        </tr>
+                        <tr>
+                            <td>One Line Row 5</td>
+                            <td>0.00</td>
+                        </tr>
+                        <tr>
+                            <td>One Line Row 6</td>
+                            <td>0.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="data-column">
+            <div class="chart">
+                <h4>Chart</h4>
+                <div id="chart-info">
+                    <p id="chart-date-info">Sep 1, 2016 12:00 am +00.00</p>
+                    <p class="stack-info">
+                        Price: <span id="price-value">1800,00</span>
+                        Volume: <span id="volume-value">100.00</span>
+                    </p>
+                </div>
+                <div class="chart-container">
+                    <div class="chart-horizontal-grid">
+                        <div class="grid-horizontal-line"><span>1,80K</span></div>
+                        <div class="grid-horizontal-line"><span>1,60K</span></div>
+                        <div class="grid-horizontal-line"><span>1,40K</span></div>
+                        <div class="grid-horizontal-line"><span>1,20K</span></div>
+                        <div class="grid-horizontal-line"><span>1,00K</span></div>
+                        <div class="grid-horizontal-ticks">
+                            <div class="tick">03 pm</div>
+                            <div class="tick">05 pm</div>
+                            <div class="tick">07 pm</div>
+                            <div class="tick">09 pm</div>
+                        </div>
+                    </div>
+                    <div class="chart-data"></div>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<% } %>
-<% if (includeEventBuilder) { %>
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h4 class="panel-title">
-            <a data-toggle="collapse" data-parent="#features-accordion"
-               href="#events">Events Context</a>
-        </h4>
-    </div>
-    <div id="events" class="panel-collapse collapse">
+    <% } %>
+    <% if (includeEventBuilder) { %>
+    <div class="tab-pane fade scrollable-data" id="events-context">
         <div class="panel-body">
             <!-- EVENTS MARKUP GOES HERE -->
             <div class="error error-alert" style="display: none">
@@ -58,7 +154,7 @@
                     </p>
                 </div>
             </div>
-            <button type="button" class="btn btn-success submit-button">Publish Event</button>
+            <button type="button" class="btn btn-primary submit-button">Publish Event</button>
             <div class="dropdown dropdown-filtered">
                 <button class="btn btn-default dropdown-toggle event-selector" type="button"
                         id="event-selector"
@@ -69,11 +165,11 @@
                 <ul class="dropdown-menu" role="menu" aria-labelledby="event-selector">
                     <li role="presentation" data-value="SINGLE_INSTRUMENT" data-filtered="true">
                         <a role="menuitem" tabindex="-1" href="javascript:void(0)">
-                            SINGLE_INSTRUMENT</a>
+                            Single Instrument</a>
                     </li>
                     <li role="presentation" data-value="MULTIPLE_INSTRUMENTS" data-filtered="true">
                         <a role="menuitem" tabindex="-1" href="javascript:void(0)">
-                            MULTIPLE_INSTRUMENTS</a>
+                            Multiple Instruments</a>
                     </li>
                 </ul>
             </div>
@@ -85,18 +181,15 @@
             <div class="incoming-event-editor"></div>
         </div>
     </div>
-</div>
-<% } %>
-<% if (includeQuotesDataSource) { %>
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h4 class="panel-title">
-            <a data-toggle="collapse" data-parent="#features-accordion"
-               href="#quotes-request-builder">Quotes Data</a>
-        </h4>
-    </div>
-    <div id="quotes-request-builder" class="panel-collapse collapse">
-        <div class="panel-body waiting-container">
+    <% } %>
+    <% if (includeQuotesDataSource) { %>
+    <div class="tab-pane fade scrollable-data waiting-container" id="quotes-data">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                Quotes Data
+            </h4>
+        </div>
+        <div class="panel-body">
             <!--  DATASOURCE MARKUP GOES HERE  -->
             <div class="error error-alert" style="display: none">
                 <div class="error-message">
@@ -106,43 +199,62 @@
                     </p>
                 </div>
             </div>
-            <button type="button" class="btn btn-success submit-button">Make Request</button>
-            <h3>Request Body:</h3>
+            <div class="input-panel">
+                <label for="symbolsName" class="form-label">Symbols</label>
+                <input type="text" class="form-control" id="symbolsName">
+                <label for="symbologyName" class="form-label">Symbology</label>
+                <input type="text" class="form-control" id="symbologyName">
+                <button type="button" class="btn btn-primary submit-button">Make Request</button>
+            </div>
 
-            <div class="request-editor"></div>
-            <h3>Response Body:</h3>
-
-            <div class="response-editor"></div>
-            <div class="waiting" style="display: none;">
-                <div class="waiter">
-                    <div class='bar-1'></div>
-                    <div class='bar-2'></div>
-                    <div class='bar-3'></div>
-                    <div class='bar-4'></div>
-                    <div class='bar-5'></div>
-                    <div class='bar-6'></div>
-                    <div class='bar-7'></div>
-                    <div class='bar-8'></div>
-                    <div class='bar-9'></div>
-                    <div class='bar-10'></div>
-                    <div class='bar-11'></div>
-                    <div class='bar-12'></div>
+            <div class="data-container" style="display: none;">
+                <div class="scrollable-table">
+                    <div class="header-table">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <th class="dis600" data-id="Name">Name</th>
+                                    <th data-id="Symbol">Symbol</th>
+                                    <th data-id="Last">Last</th>
+                                    <th class="dis600" data-id="Volume">Volume</th>
+                                    <th data-id="PercentChange">Change</th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="content-table">
+                        <table>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
+        <div class="waiting" style="display: none;">
+            <div class="waiter">
+                <div class='bar-1'></div>
+                <div class='bar-2'></div>
+                <div class='bar-3'></div>
+                <div class='bar-4'></div>
+                <div class='bar-5'></div>
+                <div class='bar-6'></div>
+                <div class='bar-7'></div>
+                <div class='bar-8'></div>
+                <div class='bar-9'></div>
+                <div class='bar-10'></div>
+                <div class='bar-11'></div>
+                <div class='bar-12'></div>
+            </div>
+        </div>
     </div>
-</div>
-<% } %>
-<% if (includeTimeSeriesDataSource) { %>
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h4 class="panel-title">
-            <a data-toggle="collapse" data-parent="#features-accordion"
-               href="#time-series-request-builder">Time Series Data</a>
-        </h4>
-    </div>
-    <div id="time-series-request-builder" class="panel-collapse collapse">
-        <div class="panel-body waiting-container">
+    <% } %>
+    <% if (includeTimeSeriesDataSource) { %>
+    <div class="tab-pane fade scrollable-data waiting-container" id="time-series-data">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                Time Series Data
+            </h4>
+        </div>
+        <div class="panel-body">
             <!--  DATASOURCE MARKUP GOES HERE  -->
             <div class="error error-alert" style="display: none">
                 <div class="error-message">
@@ -152,43 +264,40 @@
                     </p>
                 </div>
             </div>
-            <button type="button" class="btn btn-success submit-button">Make Request</button>
+            <button type="button" class="btn btn-primary submit-button">Make Request</button>
             <h3>Request Body:</h3>
 
             <div class="request-editor"></div>
             <h3>Response Body:</h3>
 
             <div class="response-editor"></div>
-            <div class="waiting" style="display: none;">
-                <div class="waiter">
-                    <div class='bar-1'></div>
-                    <div class='bar-2'></div>
-                    <div class='bar-3'></div>
-                    <div class='bar-4'></div>
-                    <div class='bar-5'></div>
-                    <div class='bar-6'></div>
-                    <div class='bar-7'></div>
-                    <div class='bar-8'></div>
-                    <div class='bar-9'></div>
-                    <div class='bar-10'></div>
-                    <div class='bar-11'></div>
-                    <div class='bar-12'></div>
-                </div>
+        </div>
+        <div class="waiting" style="display: none;">
+            <div class="waiter">
+                <div class='bar-1'></div>
+                <div class='bar-2'></div>
+                <div class='bar-3'></div>
+                <div class='bar-4'></div>
+                <div class='bar-5'></div>
+                <div class='bar-6'></div>
+                <div class='bar-7'></div>
+                <div class='bar-8'></div>
+                <div class='bar-9'></div>
+                <div class='bar-10'></div>
+                <div class='bar-11'></div>
+                <div class='bar-12'></div>
             </div>
         </div>
     </div>
-</div>
-<% } %>
-<% if (includeNewsDataSource) { %>
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h4 class="panel-title">
-            <a data-toggle="collapse" data-parent="#features-accordion"
-               href="#news-request-builder">News Data</a>
-        </h4>
-    </div>
-    <div id="news-request-builder" class="panel-collapse collapse">
-        <div class="panel-body waiting-container">
+    <% } %>
+    <% if (includeNewsDataSource) { %>
+    <div class="tab-pane fade scrollable-data waiting-container" id="news-data">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                News Data
+            </h4>
+        </div>
+        <div class="panel-body">
             <!--  DATASOURCE MARKUP GOES HERE  -->
             <div class="error error-alert" style="display: none">
                 <div class="error-message">
@@ -198,36 +307,48 @@
                     </p>
                 </div>
             </div>
-            <button type="button" class="btn btn-success submit-button">Make Request</button>
-            <h3>Request Body:</h3>
+            <div class="input-panel">
+                <label for="symbolsName" class="form-label">Symbols</label>
+                <input type="text" class="form-control" id="symbolsName">
+                <label for="symbologyName" class="form-label">Symbology</label>
+                <input type="text" class="form-control" id="symbologyName">
+                <button type="button" class="btn btn-primary submit-button">Make Request</button>
+            </div>
 
-            <div class="request-editor"></div>
-            <h3>Response Body:</h3>
-
-            <div class="response-editor"></div>
-            <div class="waiting" style="display: none;">
-                <div class="waiter">
-                    <div class='bar-1'></div>
-                    <div class='bar-2'></div>
-                    <div class='bar-3'></div>
-                    <div class='bar-4'></div>
-                    <div class='bar-5'></div>
-                    <div class='bar-6'></div>
-                    <div class='bar-7'></div>
-                    <div class='bar-8'></div>
-                    <div class='bar-9'></div>
-                    <div class='bar-10'></div>
-                    <div class='bar-11'></div>
-                    <div class='bar-12'></div>
-                </div>
+            <div class="data-container" style="display: none; font-size: 0;">
+                <div class="separate-line"></div>
+                <div class="content-container"></div>
+            </div>
+        </div>
+        <div class="news-container" style="display: none;">
+            <div class="news-nav">
+                <div class="back"></div>
+                <div class="news-header"></div>
+            </div>
+            <div class="news-full">
+                <p></p>
+            </div>
+        </div>
+        <div class="waiting" style="display: none;">
+            <div class="waiter">
+                <div class='bar-1'></div>
+                <div class='bar-2'></div>
+                <div class='bar-3'></div>
+                <div class='bar-4'></div>
+                <div class='bar-5'></div>
+                <div class='bar-6'></div>
+                <div class='bar-7'></div>
+                <div class='bar-8'></div>
+                <div class='bar-9'></div>
+                <div class='bar-10'></div>
+                <div class='bar-11'></div>
+                <div class='bar-12'></div>
             </div>
         </div>
     </div>
-</div>
-<% } %>
-</div>
-</div>
-</div>
+    <% } %>
+    </div>
+    <% } %>
 </div>
 <div class="waiting global-waiting">
     <div class="waiter">
@@ -252,9 +373,24 @@
 <script type="text/javascript" src="js/greeting.ui.js"></script>
 <script type="text/javascript" src="js/greeting.js"></script>
 <% } %>
-<% if (includeDataSourceBuilder) { %>
+<% if (notEmpty) { %>
+<script type="text/javascript" src="js/base-builder.ui.js"></script>
+<% } %>
+<% if (includeQuotesDataSource || includeNewsDataSource || includeTimeSeriesDataSource) { %>
+<script type="text/javascript" src="js/waiting-builder.ui.js"></script>
+
+<script type="text/javascript" src="js/data-builder.ui.js"></script>
+<script type="text/javascript" src="js/data-builder.js"></script>
+<% if (includeNewsDataSource) { %>
+<script type="text/javascript" src="js/news-builder.ui.js"></script>
+<% } %>
+<% if (includeQuotesDataSource) { %>
+<script type="text/javascript" src="js/quotes-builder.ui.js"></script>
+<% } %>
+<% if (includeTimeSeriesDataSource) { %>
 <script type="text/javascript" src="js/request-builder.ui.js"></script>
 <script type="text/javascript" src="js/request-builder.js"></script>
+<% } %>
 <% } %>
 <% if (includeEventBuilder) { %>
 <script type="text/javascript" src="js/event-builder.ui.js"></script>
@@ -262,6 +398,44 @@
 <% } %>
 <script type="text/javascript" src="js/widget.js"></script>
 <!-- endbuild -->
+<% if (includeQuotesDataSource) { %>
+<script id="quoteValue" type="text/template">
+    {{ _.each(target, function(value){ }}
+    <tr>
+        <td class="dis600" title="{{=value.Name}}">
+            {{=value.Name}}
+        </td>
+        <td title="{{=value.Symbol}}">{{=value.Symbol}}</td>
+        <td title="{{=value.LastPrice}}">{{=value.LastPrice}}</td>
+        <td class="dis600" title="{{=value.Volume}}">{{=value.Volume}}</td>
+        <td title="{{=value.PercentChange}} | {{=value.NetChange}}">
+            <div class="change {{ if(value.NetChange > 0) { }} increase {{ } else if(value.NetChange < 0) { }} decrease {{ } }}">
+                <div>{{=value.PercentChange}}%</div>
+                <div>{{=value.NetChange}}</div>
+            </div>
+        </td>
+    </tr>
+    {{ }); }}
+</script>
+<% } %>
+<% if (includeNewsDataSource) { %>
+<script id="newsValue" type="text/template">
+    <div class="news-item">
+        <a href="#" title="{{=header}}">
+            <div class="news-thumbnail">
+                {{ if (typeof image !== 'undefined') { }}
+                <img src="{{= image.Url }}" alt="{{= image.Title}}">
+                {{ } }}
+            </div>
+            <div class="news-headline">
+                {{=header}}
+            </div>
+        </a>
+        <div class="news-date">
+            {{=date}}
+        </div>
+    </div>
+</script>
+<% } %>
 </body>
 </html>
-

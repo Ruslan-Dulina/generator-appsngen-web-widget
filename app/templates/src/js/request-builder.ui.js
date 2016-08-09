@@ -1,4 +1,5 @@
 (function (exports) {
+    /*globals CodeMirror*/
     'use strict';
     var widget = exports.widget || {};
 
@@ -16,7 +17,6 @@
                         mode: 'application/javascript',
                         lineNumbers: true,
                         value: requestString
-
                     });
 
                     that.incomingEventEditor = new CodeMirror(that.$incomingEventEditor[0], {
@@ -30,9 +30,7 @@
             }
         };
 
-        this.$container = $('#' + options.containerId);
-        this.$waiting = this.$container.find('.waiting');
-        this.$error = this.$container.find('.error');
+        widget.WaitingBuilderUI.apply(this, arguments);
         this.$outgoingEventEditor = this.$container.find('.request-editor');
         this.$incomingEventEditor = this.$container.find('.response-editor');
 
@@ -46,15 +44,14 @@
         if (this.$container.is(':visible')) {
             initializeCodeMirror();
         } else {
-            this.$container.on('show.bs.collapse', function () {
+            $('[href=#' + options.containerId +']').on('shown.bs.tab', function () {
                 initializeCodeMirror();
             });
         }
-
-        this.$error.find('button').on('click', function () {
-            that.hideError();
-        });
     };
+
+    RequestBuilderUI.prototype = Object.create(widget.WaitingBuilderUI.prototype);
+    RequestBuilderUI.prototype.constructor = RequestBuilderUI;
 
     RequestBuilderUI.prototype.setRequestString = function (requestString) {
         this.outgoingEventEditor.getDoc().setValue(requestString);
@@ -70,23 +67,6 @@
 
     RequestBuilderUI.prototype.getResponseString = function () {
         return this.incomingEventEditor.getDoc().getValue();
-    };
-
-    RequestBuilderUI.prototype.showWaiting = function () {
-        this.$waiting.show();
-    };
-
-    RequestBuilderUI.prototype.hideWaiting = function () {
-        this.$waiting.hide();
-    };
-
-    RequestBuilderUI.prototype.showError = function (message) {
-        this.$error.find('p').text('Sorry, error occurred. ' + message);
-        this.$error.show('fast');
-    };
-
-    RequestBuilderUI.prototype.hideError = function () {
-        this.$error.hide('fast');
     };
 
     widget.RequestBuilderUI = RequestBuilderUI;

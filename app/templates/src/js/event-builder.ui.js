@@ -1,4 +1,5 @@
 (function (exports) {
+    /*globals CodeMirror*/
     'use strict';
     var widget = exports.widget || {};
 
@@ -26,8 +27,7 @@
             }
         };
 
-        this.$container = $('#' + options.containerId);
-        this.$error = this.$container.find('.error');
+        widget.BaseBuilderUI.apply(this, arguments);
         this.eventSelectorApi = this.$container.find('.event-selector')
             .dropdown()
             .on('valueChanged', function (e, newValue) {
@@ -48,15 +48,14 @@
         if (this.$container.is(':visible')) {
             initializeCodeMirror();
         } else {
-            this.$container.on('show.bs.collapse', function () {
+            $('[href=#events-context]').on('shown.bs.tab', function () {
                 initializeCodeMirror();
             });
         }
-
-        this.$error.find('button').on('click', function () {
-            that.hideError();
-        });
     };
+
+    EventBuilderUI.prototype = Object.create(widget.BaseBuilderUI.prototype);
+    EventBuilderUI.prototype.constructor = EventBuilderUI;
 
     EventBuilderUI.prototype.getOutgoingEventType = function () {
         return this.eventSelectorApi.getValue();
@@ -80,15 +79,6 @@
 
     EventBuilderUI.prototype.getIncomingEventString = function () {
         return this.incomingEventEditor.getDoc().getValue();
-    };
-
-    EventBuilderUI.prototype.showError = function (message) {
-        this.$error.find('p').text('Sorry, error occurred. ' + message);
-        this.$error.show('fast');
-    };
-
-    EventBuilderUI.prototype.hideError = function () {
-        this.$error.hide('fast');
     };
 
     widget.EventBuilderUI = EventBuilderUI;

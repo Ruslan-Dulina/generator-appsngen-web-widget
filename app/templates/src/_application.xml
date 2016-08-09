@@ -9,13 +9,16 @@
     <Metadata>
         <Information>
             <![CDATA[
-			<%= description %>
-		]]>
+                <%= description %>
+            ]]>
         </Information>
         <Categories>Examples</Categories>
+        <% if(includeDataSource) { %>
         <DataSources>
             <Source>epam_systems.mashupengine</Source>
         </DataSources>
+        <% } %>
+        <% if (includeEvents) { %>
         <Events>
             <Event>
                 <Name>SINGLE_INSTRUMENT</Name>
@@ -28,8 +31,10 @@
                 <Publish/>
             </Event>
         </Events>
-        <SupportedDimensions>MEDIUM</SupportedDimensions>
+        <% } %>
+        <SupportedDimensions>SMALL|MEDIUM|LARGE</SupportedDimensions>
     </Metadata>
+    <% if (includePreferences) { %>
     <UserPref name="greeting"
               display_name="Preferred greeting"
               datatype="text"
@@ -63,6 +68,7 @@
               group_name="Greeting Customization"
               description="Example of color preference.">
     </UserPref>
+    <% } %>
     <Content type="html" href="index.html">
     </Content>
 </Module>
