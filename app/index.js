@@ -201,11 +201,16 @@
                     htmlAndJsTemplateData.includeEventBuilder || htmlAndJsTemplateData.includeQuotesDataSource ||
                     htmlAndJsTemplateData.includeGreeting || htmlAndJsTemplateData.includeEventBuilder;
 
+                if (htmlAndJsTemplateData.notEmpty) {
+                    srcFiles = srcFiles.concat([
+                        'src/js/base-builder.ui.js'
+                    ]);
+                }
+
                 if (htmlAndJsTemplateData.includeNewsDataSource ||
                     htmlAndJsTemplateData.includeQuotesDataSource ||
                     htmlAndJsTemplateData.includeTimeSeriesDataSource) {
                     srcFiles = srcFiles.concat([
-                        'src/js/base-builder.ui.js',
                         'src/js/data-builder.js',
                         'src/js/data-builder.ui.js',
                         'src/js/waiting-builder.ui.js'

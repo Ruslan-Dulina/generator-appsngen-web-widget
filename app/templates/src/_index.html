@@ -373,8 +373,10 @@
 <script type="text/javascript" src="js/greeting.ui.js"></script>
 <script type="text/javascript" src="js/greeting.js"></script>
 <% } %>
-<% if (includeQuotesDataSource || includeNewsDataSource || includeTimeSeriesDataSource) { %>
+<% if (notEmpty) { %>
 <script type="text/javascript" src="js/base-builder.ui.js"></script>
+<% } %>
+<% if (includeQuotesDataSource || includeNewsDataSource || includeTimeSeriesDataSource) { %>
 <script type="text/javascript" src="js/waiting-builder.ui.js"></script>
 
 <script type="text/javascript" src="js/data-builder.ui.js"></script>
