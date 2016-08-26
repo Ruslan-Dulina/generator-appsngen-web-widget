@@ -199,7 +199,7 @@
 
                 htmlAndJsTemplateData.notEmpty = htmlAndJsTemplateData.includeNewsDataSource||
                     htmlAndJsTemplateData.includeEventBuilder || htmlAndJsTemplateData.includeQuotesDataSource ||
-                    htmlAndJsTemplateData.includeGreeting || htmlAndJsTemplateData.includeEventBuilder;
+                    htmlAndJsTemplateData.includeGreeting || htmlAndJsTemplateData.includeTimeSeriesDataSource;
 
                 if (htmlAndJsTemplateData.notEmpty) {
                     srcFiles = srcFiles.concat([
