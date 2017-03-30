@@ -12,6 +12,7 @@
                 <%= description %>
             ]]>
         </Information>
+        <Version>0.0.1</Version>
         <Categories>Examples</Categories>
         <% if(includeDataSource) { %>
         <DataSources>
